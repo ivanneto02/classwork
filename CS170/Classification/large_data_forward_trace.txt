@@ -1,0 +1,42 @@
+=============================================================
+Welcome to the Nearest Neighbor Classifier part of Project 2.
+
+This project is meant for Part 2 of Project 2. Essentially what
+this program can do is take in a dataset given by the format of
+the project, and both (1) train a Nearest Neighbors classifier,
+based on some number of data points, then (2) test the classifier
+with some test samples.
+
+Input the name of the dataset: large_data.txt
+"large_data.txt" information:
+  - rows: 1000
+  - cols: 41
+  - cells: 41000
+  - features: 40
+
+Normalizing data...
+
+  (1) - Greedy Forward Selection
+  (2) - Greedy Backward Selection
+  (3) - Custom ((secret)) Algorithm
+
+Input your desired feature selection algorithm: 1
+
+Evaluating...
+curr: {} _acc: (0.809%)
+
+  next: {27} _acc: (0.847%) - [MOVING]
+
+curr: {27} _acc: (0.847%)
+
+  next: {1, 27} _acc: (0.955%) - [MOVING]
+
+curr: {1, 27} _acc: (0.955%)
+
+  next: {1, 15, 27} _acc: (0.95%) - [DONE]
+
+Solution found!
+
+The ideal feature subset is {1, 27}
+- Accuracy: 0.955%
+=============================================================

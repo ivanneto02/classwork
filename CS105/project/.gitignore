@@ -1,0 +1,10 @@
+pitt-delimited.txt
+venv/
+__pycache__/
+pitt.txt
+pitt-small.txt
+*.csv
+*.bin
+*.rar
+*.zip
+imgs/

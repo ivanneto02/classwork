@@ -1,0 +1,25 @@
+
+# VSCode stuff
+.vscode/
+
+# Make stuff
+Makefile
+!lab2source/Makefile
+
+# CMake stuff
+CMakeCache.txt
+CMakeFiles/
+*.cmake
+lib/
+bin/
+
+# gtest stuff
+_deps/
+
+# Virtual environment in case I have to do something with it...
+venv/
+
+# Executables - important to ignore because
+# the user does not need to see these, and they
+# are often just tests
+shell_test
