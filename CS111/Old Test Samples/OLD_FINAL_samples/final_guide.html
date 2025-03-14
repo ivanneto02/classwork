@@ -1,0 +1,580 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+<TITLE>syllabus</TITLE>
+<META NAME="description" CONTENT="syllabus">
+<META NAME="keywords" CONTENT="syllabus">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+</HEAD>
+
+<BODY  background = "../../G/white.softtexture.gif"
+        text="#0f303f"
+        link="#202070"
+        alink="#co4000"
+        vlink="#0f6040"
+       >
+
+<P>
+<BR> <BR>
+
+<DIV ALIGN="CENTER"><FONT SIZE="+2" font color =  "#8c035a">
+<B> Study Guide for CS/Math 111 Final
+</B>
+</FONT>
+</DIV>
+
+<BR>
+<P>
+
+
+<!-- ********************************************************************** -->
+<table width="100%" cellpadding="2" border="0">
+  <tr>
+    <td align="left" bgcolor= "#527980">
+      <font color="#ffffff" face="Helvetica, Arial" size="-2">
+        <big><b> &nbsp; Asymptotic Notation </b></big>
+      </font>
+    </td>
+  </tr>
+</table>
+<!-- ********************************************************************** -->
+
+<ol>
+
+                <li> big-O, big-&#937, big-&#920
+                notations
+
+                <li> Polynomial, exponential,
+                        and logarithmic functions
+
+                <li> Estimating the growth of
+                         of functions using asymptotic notation:
+                    express the magnitude of
+                        function f(n) using the
+                        &#920 notation, where
+                        <ul>
+                        <li>
+                        f(n) = 4n<sup>3</sup> +2<sup>n</sup> + 1
+                        <li>
+                        f(n) = n<sup>3</sup>logn +5n<sup>2</sup>log<sup>3</sup>n + 13
+                        </ul>
+                        
+                <li> Estimating the running time of
+                        algorithms (given a piece of
+                        pseudo-code, determine its
+                        asymptotic running time).
+</ol>
+
+
+
+<!-- ********************************************************************** -->
+<table width="100%" cellpadding="2" border="0">
+  <tr>
+    <td align="left" bgcolor= "#527980">
+      <font color="#ffffff" face="Helvetica, Arial" size="-2">
+        <big><b> &nbsp; Relations </b></big>
+      </font>
+    </td>
+  </tr>
+</table>
+<!-- ********************************************************************** -->
+
+<ol>
+	<li> Definition of relations
+	<li> Properties of relations: reflexive, symmetric,
+			and transitive relations
+
+	<li> Given a relation ... determine whether this relation
+			is transitive, reflexive, symmetric, anti-symmetric,
+			equivalence relation, partial order.
+
+<li> Equivalence relations, and
+			equivalence classes.
+        <ul>
+        <li>
+        Let X be the set of all pairs (x,y) of
+        integers, where 0 &#8804 x &#8804 2 and 0 &#8804 y &#8804 3.
+        Define relation R such that
+        (x,y) R (u,v) if and only if
+        x+y = u+v (mod 3). Give the matrix of R
+        and show that R is an equivalence relation.
+        List equivalence classes of R.
+
+        <li>
+        Let Z be the set of all integers, and let
+        R be a relation on Z such that xRy iff
+        |x-y| &#8804 3. Is R an equivalence relation?
+        Justify your answer.
+
+        </ul>
+
+<li> Partial orders.
+
+        <ul>
+
+        <li>
+        Let X be the set of all pairs (x,y) of
+        integers, where 0 &#8804 x &#8804 2 and 0 &#8804 y &#8804 3.
+        Let R be the relation on X such that
+        (x,y)R(u,v) iff x &#8804 u and y &#8805 v.
+        Give the matrix of R.
+        Is R a partial order? Justify your answer. 
+
+        <li>
+        Consider an arbitrary directed acyclic graph G.
+        Define a relation R on its vertices as follows:
+        uRv iff there is a directed path from u to v.
+        Prove that R is a partial order.
+
+        </ul>
+
+</ol>
+
+
+
+
+<!-- ********************************************************************** -->
+<table width="100%" cellpadding="2" border="0">
+  <tr>
+    <td align="left" bgcolor= "#527980">
+      <font color="#ffffff" face="Helvetica, Arial" size="-2">
+        <big><b> &nbsp; Induction </b></big>
+      </font>
+    </td>
+  </tr>
+</table>
+<!-- ********************************************************************** -->
+
+<ol>
+	<li> Prove by induction that 1+2+...+n = n(n+1)/2.
+		
+	<li> Prove by induction that 1+r + r<sup>2</sup> + ...+r<sup>n</sup>
+						 = (r<sup>n+1</sup>-1)/(r-1).
+						
+	<li> Let  h<sub>0</sub> = h<sub>1</sub> = 1 and
+		 h<sub>n</sub> = 2h<sub>n-1</sub> + h<sub>n-2</sub> for
+		n &#8805 2. Prove that  h<sub>n</sub> &#8804 2.5<sup>n</sup>.
+	
+	<li> Prove (by induction) that a binary tree of height h has
+	at most 2<sup>h</sup> leaves.
+	
+	<li> Prove that a tree with n nodes has exactly n-1 edges.
+	
+	<li> Use induction to prove Euler's formula for planar graphs.
+	
+</ol>
+
+
+
+
+<!-- ********************************************************************** -->
+<table width="100%" cellpadding="2" border="0">
+  <tr>
+    <td align="left" bgcolor= "#527980">
+      <font color="#ffffff" face="Helvetica, Arial" size="-2">
+        <big><b> &nbsp; Number Theory </b></big>
+      </font>
+    </td>
+  </tr>
+</table>
+<!-- ********************************************************************** -->
+
+ <ol>
+
+                <li> The basics:
+        prime numbers, factorization, relatively prime numbers,
+        greatest common divisor, least common multiple.
+
+	<li> Famous problems in number theory (state):
+		Fermat's Last Theorem,
+		Goldbach Conjecture,
+		Twin Primes Conjecture,
+		Primality Testing,
+		Factorization,
+		The Prime Number Theorem.
+
+                <li> Fast modular exponentiation:
+                        state the algorithm, 
+                       use the algorithm to compute
+                        3<sup>17</sup> mod 5,...
+
+                <li> Euclid's algorithm:
+                        state the algorithm,
+                        use the algorithm to
+                        compute gcd(18,159),...
+
+		<li> gcd(a,b) as a linear combination of a,b. Using Euclid's algorithm to
+	compute &#945 and &#946 satisfying &#945 a + &#946 b = gcd(a,b).
+		<li> Modular arithmetic: computing sum, difference, multiplication, or
+	powers modulo a number. Example: compute 7<sup>547549</sup> rem 8.
+		<li> Inverses modulo a prime. Using linear combinations to compute
+		inverses.
+                       
+                <li> Linear congruences and
+                        inverses:
+                        find x such that
+                        7x = 5 (mod 19)
+                        
+                <li> Fermat's Little Theorem:
+                        state the theorem,
+                        show an example (choose a prime
+                        at least 10, and some other
+                        integer x at most p-1, and compute
+                        x<sup>p-1</sup> mod p.).
+
+				<li> How we can use Fermat's Little Theorem to
+						compute inverses. Use it to compute
+						 2<sup>-1</sup> (mod 11) 
+						
+				<li> Use Fermat's Little Theorem to compute
+						3<sup>1247</sup> rem 13
+                        
+                <li> The RSA
+	                <ul>
+	               <li>
+	               Explain the principles of
+	               public-key cryptosystems
+
+	               <li>
+	               Explain the RSA (initialization,
+	               encryption, decryption)
+
+	               <li>
+	               Suppose that Bob chooses p = 5,
+                        q = 11. Show some correct values of
+                        e (public exponent) and d (secret exponent). 
+
+						<li>
+						Bob uses P = (143,19) as his public
+						key and S = 21 as his secret key.
+						Is Bob's system correct?
+
+                        <li>
+                Suppose Bob chooses p =7, q = 13,
+                e = 11. Determine d. If Alice wants
+                to send M = 10 to Bob, what is
+                the ciphertext?
+
+                        </ul>
+</ol>
+
+
+<!-- ********************************************************************** -->
+<table width="100%" cellpadding="2" border="0">
+  <tr>
+    <td align="left" bgcolor= "#527980">
+      <font color="#ffffff" face="Helvetica, Arial" size="-2">
+        <big><b> &nbsp; Linear Recurrence Relations
+                 </b></big>
+      </font>
+    </td>
+  </tr>
+</table>
+<!-- ********************************************************************** -->
+
+<ol>
+	
+
+<li>
+Give the recurrence relation for
+Fibonacci numbers.
+
+<li> 
+Setting up recurrence relations.
+<ul>
+	<li>
+	Consider the following problem, similar to the
+	tiling problem we covered in class. We want 
+	to tile a 3 by n grid with 1 by 2 tiles.
+	Let g<sub>n</sub> be the number of such
+	tilings. Derive a recurrence relation for g<sub>n</sub>.
+	
+	<li>
+	One female rabbit produces 3 female rabbits
+	per week, starting the 2nd week after its born.
+	You receive one newly-born female rabbit for
+	your birthday. How many female rabbits you will have
+	after n weeks? (These are genetically
+	modified female rabbits that do not need male rabbits
+	for reproduction.)
+	
+</ul>
+
+ <li> Solving linear homogeneous recurrences equations
+                (degree 1, 2, perhaps 3):
+
+	<ul>
+<li> 
+Solve the following recurrence:
+f<sub>n</sub> = 5f<sub>n-1</sub> - 6f<sub>n-2</sub>,
+with initial conditions
+f<sub>0</sub> = 1,
+f<sub>1</sub> = 2. Show your work.
+
+<li>
+Determine the general solution of the
+recurrence
+h<sub>n</sub> = 5h<sub>n-1</sub> + 15h<sub>n-2</sub>
+					- 9 h<sub> n-3</sub>
+		
+		</ul>
+					
+ <li> Solving linear non-homogeneous recurrences equations
+                (degree 1 and 2)
+
+      <ul>
+
+
+<li>
+Solve the recurrence
+D<sub>n</sub> = 3D<sub>n-1</sub> +2n, 
+D<sub>0</sub> = 0.
+
+<li>
+Find a particular solution of the recurrence
+f<sub>n</sub> = 5f<sub>n-1</sub> - 6f<sub>n-2</sub>
+                + n+5.
+
+<li>
+Find a particular solution of the recurrence
+g<sub>n</sub> = 5g<sub>n-1</sub> - 6g<sub>n-2</sub>
+                + 2<sup>n</sup>.
+
+       </ul>
+
+</ol>
+
+
+
+<!-- ********************************************************************** -->
+<table width="100%" cellpadding="2" border="0">
+  <tr>
+    <td align="left" bgcolor= "#527980">
+      <font color="#ffffff" face="Helvetica, Arial" size="-2">
+        <big><b> &nbsp; Divide-and-Conquer Recurrences
+                 </b></big>
+      </font>
+    </td>
+  </tr>
+</table>
+<!-- ********************************************************************** -->
+
+<ol>
+                <li>
+                State the Master Theorem
+
+
+<li>
+Give an (asymptotic) solution
+to the following recurrence:
+f(n) = 3f(n/2) + 3n
+
+<li>
+Give an (asymptotic) solution
+	to the following recurrence:
+	f(n) = 8f(n/2) + 5*n<sup>4</sup>
+
+<li>
+Given the pseudo-code below,
+what is the (asymptotic) number
+of lines printed on input n? ...
+
+</ol>
+
+<!-- ********************************************************************** -->
+<table width="100%" cellpadding="2" border="0">
+  <tr>
+    <td align="left" bgcolor= "#527980">
+      <font color="#ffffff" face="Helvetica, Arial" size="-2">
+        <big><b> &nbsp; Inclusion-Exclusion
+                 </b></big>
+      </font>
+    </td>
+  </tr>
+</table>
+<!-- ********************************************************************** -->
+
+ <ol>
+
+<li>
+Give a complete statement of the
+inclusion-exclusion principle.
+
+<li>
+Suppose that we have sets A, B, C
+such that
+|A|= 22, |B| = 36, |C| = 26,
+|A &#8745 B| = 2|A &#8745 B &#8745 C|,
+|A &#8745 C| = 3|A &#8745 B &#8745 C|,
+|B &#8745 C| = 4|A &#8745 B &#8745 C|,
+|A &#8746 B &#8746 C| = 13|A &#8745 B &#8745 C|.
+Determine the number of elements
+in the  of these three sets.
+
+<li>
+We have a group of 53 people,
+including 22 US citizens, 15 Mexican
+citizens, and 27 Canadian citizens.
+Among them, 4 people have a dual
+US-Mexican citizenship,
+5 have US-Canadian citizenship,
+and 6 have Canadian-Mexican
+citizenship. How many people have
+a triple citizenship?
+
+<li>
+Compute &#966(440) (&#966(n) is the Euler totient function).
+
+<li>
+Give the number of solutions of x+y+z = 30, for
+4 &#8804 x &#8804 14, 3 &#8804 y &#8804 17, 10 &#8804 z &#8804 25.
+
+
+</ol>
+
+<!-- ********************************************************************** -->
+<table width="100%" cellpadding="2" border="0">
+  <tr>
+    <td align="left" bgcolor= "#527980">
+      <font color="#ffffff" face="Helvetica, Arial" size="-2">
+        <big><b> &nbsp; Graphs
+                 </b></big>
+      </font>
+    </td>
+  </tr>
+</table>
+<!-- ********************************************************************** -->
+
+<ol>
+
+<li>
+Prove that in an undirected graph G the sum of
+all vertex degrees is equal to two times the number of edges.
+
+<li> Draw an undirected graph with 6 vertices X,Y,Z,T,U,Q, whose
+	degrees are deg(X) = 3, deg(Y) = 5, deg(Z) = 4,
+	deg(U) = 3, deg(T) = 2, deg(Q) = 1.
+
+<li>
+State the sufficient and necessary condition for
+an undirected graph to have an Euler cycle.
+Prove that if an undirected graph has an Euler cycle then
+all vertex degrees are even.
+
+<li>
+Can you generalize the characterization of Eulerian graphs
+to directed graphs?
+
+<li>
+State Dirac's theorem.
+
+<li>
+For graphs shown below ...., tell whether they have
+(a) an Euler tour, (b) a Hamiltonian cycle.
+Justify your answer.
+
+<li>
+For graphs shown below, determine the minimum
+number of colors needed to color them.
+Justify your answer.
+
+<li>
+Define what is a planar graph.
+
+<li>
+State Kuratowski's theorem (and define the terms
+used in this theorem).
+
+<li>
+Give Euler's formula for planar graphs (and
+define the terms involved in it.)
+
+<li>
+Using Euler's formula,
+prove that in a planar graph, m &#8804 3n-6 (where m,n
+denote the numbers of edges and vertices.)
+
+<li>
+Use Euler's inequality (m &#8804 3n-6) to prove that each
+planar graph has a vertex of degree at most 5.
+<br>
+Stronger version: Each sufficiently large planar graph must have at
+least a certain number of vertices of degree at most 5.
+What is this number? Justify your answer.
+
+<li>
+Given the graphs below (...), determine whether they
+are planar or not. If a graph is planar, show a
+planar embedding. If a graph is not planar, prove it.
+(You can use Euler's inequality, Kuratowski's theorem,
+or a direct argument.)
+
+<li>
+How many colors are needed to color planar graphs?
+Give a proof that each planar graph can be colored
+with at most 6 colors.
+(Hint: induction. Use the fact that each planar
+graph has a vertex of degree no more than 5.)
+
+<li>
+State Hall's Theorem. For the bipartite graph below..., tell
+whether it has a perfect matching. Justify your answer.
+
+
+</ol>
+
+<!-- ********************************************************************** -->
+<table width="100%" cellpadding="2" border="0">
+  <tr>
+    <td align="left" bgcolor= "#527980">
+      <font color="#ffffff" face="Helvetica, Arial" size="-2">
+        <big><b> &nbsp; Trees
+                 </b></big>
+      </font>
+    </td>
+  </tr>
+</table>
+<!-- ********************************************************************** -->
+
+<ol>
+
+<li>
+Prove, by induction, that a tree with n nodes has
+exactly n-1 edges.
+
+
+<li> Binary trees
+
+<ul>
+<li>
+Prove (by induction) that a binary tree of height h has
+at most 2<sup>h</sup> leaves.
+
+<li>
+Prove (by induction) that a binary tree of height h has
+at most 2<sup>h+1</sup>-1 nodes.
+
+<li>
+Draw a decision (comparison) tree for sorting 4 items.
+
+<li>
+Similarly as for sorting, we can consider decision
+trees for other problems that can be solved using
+comparisons. Draw a decision tree for
+selecting the second smallest element out of five.
+
+</ul>
+
+</ol>
+
+
+</BODY>
+</HTML>
+

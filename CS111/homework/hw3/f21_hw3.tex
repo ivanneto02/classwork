@@ -1,0 +1,88 @@
+\documentclass{article}
+
+\usepackage{fullpage,latexsym,picinpar,amsmath,amsfonts,graphicx}
+
+\input{macros.tex}
+
+\begin{document}
+
+\centerline{\large \bf CS111 ASSIGNMENT 3 }
+%\centerline{due }
+
+\vskip 0.2in
+
+
+\vskip 0.1in
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+We want to tile an $n\times 1$ strip with tiles of three types: $1\times 1$ tiles that are dark-blue, light-blue, and red, $2\times 1$ green and $3\times 1$ sky-blue tiles. a) Give a formula for the number of tilings $A_n$. b) Now give a formula for the number of tilings $T_n$, considering that blue tiles cannot be next to each other. Your solution must include a recurrence equation (with initial conditions!), and a full justification. You do not need to solve it. 
+
+%\noindent In how many ways can be tiled a $5\times 1$ strip?
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{problem}
+Find the general solution of the following recurrence equation:
+%
+\begin{eqnarray*}
+        f_n &=& 4f_{n-9}
+\end{eqnarray*}
+Show your work.
+
+\end{problem}
+%
+\
+\begin{problem} Solve the following recurrence equation:
+\begin{eqnarray*}
+        f_n &=& f_{n-1} + 4f_{n-2} + 2f_{n-3}\\
+        f_0 &=& 0 \\
+        f_1 &=& 1 \\
+		f_2 &=& 2 
+\end{eqnarray*}
+%
+Show your work (all steps: 
+the characteristic polynomial and its
+roots, the general solution, 
+using the initial conditions to compute the final solution.)
+\end{problem}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Find a particular solution of the recurrence equation:
+%
+\begin{eqnarray*}
+        t_n &=& 4t_{n-1} - 4t_{n-2} + 3\cdot 2^n\\
+\end{eqnarray*}
+%
+Show your work.
+%
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}
+Solve the following recurrence equation:
+%
+\begin{eqnarray*}
+        f_n &=& 13f_{n-2} + 12f_{n-3} + 2n+1\\
+        f_0 &=& 0 \\
+        f_1 &=& 1 \\
+		f_2 &=& 1
+\end{eqnarray*}
+%
+Show your work (all steps: the associated homogeneous equation,
+the characteristic polynomial and its
+roots, the general solution of the homogeneous
+equation, computing a particular solution,
+the general solution of the non-homogeneous equation,
+using the initial conditions to compute the final solution.)
+\end{problem}
+
+
+
+\end{document}

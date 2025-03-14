@@ -1,0 +1,47 @@
+To review for CS111:
+- Logic
+	- Good
+- Sets
+	- Cartesian Product	REVIEWED
+	- Infinite sets: countable vs non-countable REVIEWED
+- Relations
+	- partial orders, Hasse diagrams, topological sorting REVIEWED
+	- Equivalence relations REVIEWED
+- Basic counting
+	- multiplication rule (for independent choices) REVIEWED
+	- permutations REVIEWED
+	- k-permutations REVIEWED
+	- k-element subsets (combinations) REVIEWED
+	- basic probability REVIEWED
+- Some important functions
+	- Good
+- Some important numbers
+	- phi, golden ratio REVIEWED
+- Important sequences and summation formulas
+	- Finite arithmetic sequences REVIEWED
+	- Finite geometric sequences REVIEWED
+	- Infinite geometric sequences REVIEWED
+	- Zeno's paradox REVIEWED
+	- Harmonic numbers REVIEWED
+- Number theory basics
+	- prime and composite numbers  
+	- prime factors, factorization
+	- greatest common divisor
+	- least common multiple
+- Algebra
+	- Solving quadratic equations
+	- Solving polynomial equations with integer roots
+	- Factoring polynomials
+- What are proofs, and why do we care?
+	- Good
+- Proofs for some summation formulas and bounds
+	- Mathematical induction
+		- Sum of an arithmetic sequence
+		- Sum of a finite geometric sequence
+		- estimate for Fib numbers.
+	- Sum of infinite geometric sequence
+	- Estimating harmonic numbers
+- Other examples of proofs
+	- If R is an equivalence relation on a set X, then the equivalence classes of R form a partition of X into disjoint subsets
+	- Each finite poset has a topological sort (linear extension)
+	- Relations involving binomial coefficiens, for example (n choose k) = (n - 1 choose k) + (n - 1 choose k - 1)

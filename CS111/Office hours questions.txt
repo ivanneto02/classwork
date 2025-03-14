@@ -1,0 +1,32 @@
+Office hours questions:
+
+Modulo
+	cases
+		What if a and p are not relatively prime?
+		What if a is not prime?
+		What if p is not prime?
+
+
+Recurrence relations
+	Why can we assume that a constant times a function g(n) satisfies the original recurrence?
+	Why can we assume that if we now add alpha1 * g(n) and alpha2 * g(n), this satisfies the recurrence as well?
+	
+	Can you explain how a double root messes up the current setup to solve the recurrence relation?
+	How do we know that all functions alpha1 * 2^n are good candidates for the solution?
+	Intuition behind n*2^n?
+		- Why do we need to find a solution of some different form?
+	
+	It seems like the general solution is:
+		- We have a recurrence relation
+			- Want to find the general form
+		- If NOT double root:
+			- Get candidate solutions and use alpha1(candidate1) and alpha2(candidate2)
+			- Plug in initial conditions and solve for alpha1, alpha2. Plug them back in, and plug the x's back in as well.
+		- If double root:
+			- Find that it is double root.
+			- Get general solution to x.
+			- Get the solution in two forms: alpha1 2^n and alpha2 * n * 2^n. (again, how do we get these?)
+			- Plug in initial conditions and solve for alpha1, alpha2
+			- Plug alpha1 and alpha2 back into the recurrence to get the general form.
+		My question:
+			- How do we intuitively tell what candidate solution forms are good? like x^n for some x.

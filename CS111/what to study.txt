@@ -1,0 +1,29 @@
+Concepts that I need to study 100%
+	- Extended GCD
+		- Understand simple algorithm
+		- Understand actual algorithm
+	- Linear recurrences
+		- Understand homogeneous linear recurrences
+		- Understand non-homogeneous linear recurrences
+		- Difference between them
+		- Understand how to do sample problems
+			- Go through a bunch of sample problems
+	- RSA
+		- Fully understand the process forward and backward
+		- Fully understand how to "crack" rsa given that we have the necessary
+		information
+		- Cases when values are not valid, that would cause RSA to break
+	- Fermat's Little Theorem
+	- Euler's Totient Theorem
+		- Euler's Totient function
+			- Go through examples
+	- Understand modular arithmetic
+		- Rules
+		- How to solve for inverses
+		- How to solve by squaring
+		- How to apply FLT to RSA
+	- Modular systems of linear congruences
+	- Linear congruences
+		- Solving for x...
+	- Primality
+		- Go through all of it bc don't understand

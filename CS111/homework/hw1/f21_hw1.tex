@@ -1,0 +1,104 @@
+\documentclass{article}
+
+\usepackage{fullpage,latexsym,picinpar,amsmath,amsfonts}
+
+\input{macros.tex}
+
+\begin{document}
+
+\centerline{\large \bf CS/MATH111 ASSIGNMENT 1}
+%\centerline{due }
+
+\vskip 0.3in
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Give the exact and asymptotic formula for the number $f(n)$ of
+letters ``A" printed by Algorithm~\textsc{PrintAs} below.
+Your solution must consist of the following steps:
+%
+\begin{description}
+\item{(a)} First express $f(n)$ using a summation notation $\sum$.
+\item{(b)} Next, give a closed-form formula for $f(n)$.
+\item{(c)}  Finally, give the asymptotic value of the
+number of A's (using the $\Theta$-notation.)
+\end{description}
+\noindent
+Include justification for each step. 
+
+\smallskip
+\noindent
+\emph{Note:} If you need any summation formulas for this problem, you are allowed to look them up, and do not need to prove.
+
+\begin{tabbing}
+aa \= aa \= aa \= aa \= aa \= aa \= \kill
+\textbf{Algorithm} \textsc{PrintAs} $(n: \mbox{\bf integer})$ \\
+      \> \textbf{for} $i \leftarrow 1$ \textbf{to} $3n+2$
+                         \textbf{do} \\
+      \> \> \textbf{for} $j \leftarrow 1$ \textbf{to} $(i+2)^2$ \textbf{do} print(``A")\\
+      
+aa \= aa \= aa \= aa \= aa \= aa \= \kill
+%\textbf{Algorithm} \textsc{PrintAs} $(n: \mbox{\bf integer})$ \\
+      \> \textbf{for} $i \leftarrow 1$ \textbf{to} $(3n+2)^2$
+                         \textbf{do} \\
+      \> \> \textbf{for} $j \leftarrow 1$ \textbf{to} $i+2$ \textbf{do} print(``A")
+\end{tabbing}
+
+
+
+
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+(a) Use mathematical induction to prove that $3^n \ge n2^n$ for $n\ge 0$. 
+(Note: dealing with the base case may require some thought.)
+
+\smallskip
+\noindent (b) Consider a sequence defined recursively as
+$D_0 = 2$, $D_1 = 5$, and $D_n = 3D_{n-1}+D_{n-2}$ for
+$n\ge 2$. Prove that $D_n = O(3.4^n)$ and $D_n = \Omega(3.2^n)$.
+
+\smallskip
+\noindent
+\emph{Hint:} 
+First, prove by induction that $(3.2)^n \le D_n \le 2(3.4)^n$ for all $n\ge 0$.
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Give the asymptotic values of the
+following functions, using the $\Theta$-notation:
+%
+\begin{description}
+%
+\item{(a)} $ (n^3 + 5 n - 10)( 3 n^2 - n)$
+\item{(b)} $3 + 2 \sqrt{n} + \dfrac{n}{\log^2 n}$
+\item{(c)} $7n^2\log n + 9 n\log^5n + 15n^3$
+\item{(d)} $15n^6 + n^2\cdot 2^n + n^3\log n$
+\item{(e)} $n^3 \cdot \dfrac{7^n}{6} + n^5 \cdot 4^n$
+%
+\end{description}
+%
+Justify your answers.
+
+%(Here, you don't need to give a complete rigorous proof.
+%Give only an informal explanation using asymptotic
+%relations between the functions $n^c$, $\log n$, and $c^n$.)
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip 0.1in
+\paragraph{Submission.}
+To submit the homework, you need to upload the pdf file to Gradescope.
+
+\paragraph{Reminders.}
+Remember that only {\LaTeX} papers are accepted. 
+
+
+\end{document}
+

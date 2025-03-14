@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,latexsym,picinpar,amsmath,amsfonts}
+\input{../../../macros.tex}
+
+\begin{document}
+\smallskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+In the RSA, suppose that Bob chooses $p = 3$ and $q = 43$.
+(a) Determine three correct values of the
+public exponent $e$. Justify briefly their correctness
+(at most 20 words.)
+
+\smallskip
+We have
+$\phi(n) = (p-1)(q-1) = 2\cdot 42 = 84$.
+The value of
+$e$ should satisfy: $\gcd(e,84)=1$. Possible solutions are e.g.
+$e=5$, $e=11$ or $e=13$.
+
+
+\bigskip
+(b) For one of the $e$'s you selected, compute
+the secret exponent $d$. Show your work.
+
+\smallskip
+For $e=5$, we compute $d = 5^{-1}\pmod{84}$.
+Since $84+1 = 5\cdot 17$, we get $d=17$.
+\end{problem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vfill
+\eject
+\lineacross
+
+\begin{problem}
+Grabbits are genetically modified rabbits that live forever and reproduce asexually on a precise schedule: each grabbit gives birth to three grabbits every Wednesday starting two weeks after birth. So if you start with 1 newly born grabbit, after one week you will still only have 1 grabbit. After two weeks you will have 4 grabbits, namely your first grabbit plus its 3 offspring. In general, how many grabbits will you have after $n$ weeks if you start with one newly born grabbit? Set up a recurrence relation for this problem and solve it.
+
+
+\smallskip
+\noindent (a) Let $G_n$ be the number of grabbits after $n$ weeks. Then $G_n$ includes the $G_{n-1}$ grabbits that were alive in week $n-1$ plus the
+newly born grabbits. The number of new grabbits is $3G_{n-2}$, because only the grabbits that were around two weeks earlier can have offspring, and each
+of them gives birth to $3$ grabbits. So the recurrence relation is:
+%
+\begin{align*}
+G_n &= G_{n-1} + 3G_{n-2}
+	\\
+G_0 &= 1
+	\\
+G_1 &= 1
+\end{align*}
+
+
+\smallskip \noindent 
+(b) Characteristic polynomial and its roots:
+%
+\begin{equation*}
+x^2 - x - 3 = 0
+\end{equation*}
+%
+so $x_{1,2} = \frac{1\pm \sqrt {13}}{2}$.
+
+\smallskip \noindent 
+(c) General form of the solution:
+%
+\begin{equation*}
+\textstyle G_n = \alpha _{1} (\frac{1 + \sqrt {13}}{2})^n + \alpha _{2} (\frac{1 - \sqrt {13}}{2})^n
+\end{equation*}
+
+
+\smallskip \noindent 
+(d) Initial condition equations:
+%
+\begin{align*}
+\alpha_1 + \alpha_2 &= 1 \\
+\textstyle \alpha_1(\frac{1+\sqrt {13}}{2}) + \alpha_2(\frac{1-\sqrt {13}}{2}) &= 1
+\end{align*}
+%
+and their solution:
+%
+\begin{equation*}
+	\textstyle
+\alpha_1 = \frac{1+\sqrt {13}}{2\sqrt{13}} \quad
+\alpha_2 = \frac{-1+\sqrt {13}}{2\sqrt{13}}
+\end{equation*}
+
+
+\smallskip \noindent 
+(e) Final answer:
+The number of grabbits after $n$ weeks is:
+%
+\begin{align*}
+G_n &= \textstyle \frac{1+\sqrt {13}}{2\sqrt{13}} (\frac{1+ \sqrt {13}}{2})^n 
+					 + \frac{-1+\sqrt {13}}{2\sqrt{13}} (\frac{1- \sqrt {13}}{2})^n
+					 \\
+	&= \textstyle \frac{1}{\sqrt{13}} [ (\frac{1+ \sqrt {13}}{2})^{n+1} 
+					 -  (\frac{1- \sqrt {13}}{2})^{n+1} ]
+\end{align*}
+
+\end{problem}
+
+\end{document}
