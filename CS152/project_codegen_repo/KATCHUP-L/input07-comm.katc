@@ -1,0 +1,43 @@
+`:h~ey uncomment to get an error from the tilde (line 2, column 3)
+
+str b : "sd";
+int a : 10;
+
+` a : "hello"; ` should not work
+
+b;
+a;
+
+`str b : "bananas";
+`whole int c : 10;
+`dec e : 1.1; 
+
+`a : 15; 
+`b : "cats";
+`c : 7;
+`e : 5.5; 
+
+`a;
+`b;
+`c;  
+
+
+```
+a : 20;  ` a = 20 
+
+meow(6, a, "c");
+
+a;
+b;
+c;
+
+
+a : 5 + 7;    ` a = 20 -> a = 5 -> a + 7 
+```
+```
+str apple;
+str e : apple + 5;  ` should not work!  
+e : apple; 
+`string + string should work 
+
+```

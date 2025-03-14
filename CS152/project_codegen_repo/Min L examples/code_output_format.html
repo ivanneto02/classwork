@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+<title>Output Format for Code Generator</title>
+</head>
+
+<body>
+
+<h2><u>Output Format for Code Generator</u></h2>
+
+<h3>MIL Intermediate Code</h3>
+
+<p>
+In the event that there are no lexical, syntactic, or semantic errors in the inputted
+MINI-L program, your code generator should output the generated MIL program on stdout. 
+Refer to the <a href="mil.html">specification of the MIL intermediate code representation</a> 
+for more details about MIL code.
+</p>
+
+<hr>
+
+<h3>Semantic Error Messages</h3>
+
+<p>
+There are nine types of semantic errors that should be captured by your code generator if
+they are present in an inputted MINI-L program.
+</p>
+
+<ol>
+<li> Using a variable without having first declared it.
+<li> Calling a function which has not been defined.
+<li> Not defining a main function.
+<li> Defining a variable more than once .
+<li> Trying to name a variable with the same name as a reserved keyword.
+<li> Forgetting to specify an array index when using an array variable (i.e., trying to use an array variable as a regular integer variable).
+<li> Specifying an array index when using a regular integer variable (i.e., trying to use a regular integer variable as an array variable).
+<li> Declaring an array of size <= 0.
+<li> Using continue statement outside a loop.
+</ol>
+
+<p>
+Note that some of the above semantic errors may actually cause syntax errors during parsing.
+For example, if you try to declare a variable with a keyword name, then that will most likely
+cause a syntax error during parsing.  That is fine.  What is important is that some type of
+error message is emitted if any of the above errors are present.
+</p>
+
+<p>
+If there are multiple occurrences of the above errors,
+your code generator should output an error message for each encountered error.
+You are free to choose the particular format of each error message.
+At a minimum, each error message should include the source code line number
+at which the error is encountered.  If at least one error is encountered, then no
+intermediate code should be generated.
+</p>
+
+<p>
+
+As an example, consider the following MINI-L program.
+
+<pre>
+1. function main;
+2. beginparams
+3. endparams
+4. beginlocals
+5. 	n : integer;
+6. 	r : array [10] of integer;
+7. 	n : array [10] of integer;
+8. endlocals
+9. beginbody
+10. 	read n;
+11. 	n := z + 1;
+12. 	n := n + r;
+13. 	write n;
+14. 	continue;
+15. endbody
+</pre>
+
+<p>
+In the above program, there are four semantic errors occurring at lines 7, 11, 12 and 14.
+The corresponding error messages that might be emitted by your code generator are shown below.
+</p>
+
+<pre>
+Error line 7: symbol "n" is multiply-defined.
+Error line 11: used variable "z" was not previously declared.
+Error line 12: used array variable "r" is missing a specified index.
+Error line 14: continue statement not within a loop.
+</pre>
+</p>
+
+<p>
+Error files <a href="errors.min">errors.min</a> and <a href="custom.min">custom.min</a> can be used for testing. 
+</p>
+
+<hr>
+
+</body>
+
+</html>

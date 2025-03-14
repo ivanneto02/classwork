@@ -1,0 +1,27 @@
+`:h~ey uncomment to get an error from the tilde
+``` 1. multiline comments 
+    2. hi 
+    3. hello 
+```
+
+str variable_;
+
+int a: 1;
+meow("Hello, world!");  `might get error 
+meow(5);
+meow(a); 
+
+True;
+
+fun myFunction(int a, int b):
+    str variable_;
+    str variable2;
+    dec pi: 3.14; 
+
+    str var: "hi"; 
+
+    swat 10;
+    endfun;
+
+myFunction(3, 5);
+

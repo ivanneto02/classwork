@@ -1,0 +1,14 @@
+arr{5} katarry: {5, 6, 4, 6, 7};
+
+int five: katarry{0};
+
+five = 10;
+
+katarry{2}: 1 + 2 + 3;
+katarry{10}: 1 + 2 + 3;
+
+int a : 10;
+
+` arr{a - 1000} newarry; ` implement this, should cause semantic err
+
+a{10};

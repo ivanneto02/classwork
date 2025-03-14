@@ -1,0 +1,25 @@
+while (True):
+    while (True):
+        while (True):
+        tail;
+        if (False):
+            scratch;
+        tail;
+    tail;
+tail;
+
+scratch; ` should cause a semantic error when uncommented
+
+while (True):
+    exec:
+    when (True);
+    scratch;
+tail;
+
+exec:
+    exec:
+    when (True);
+    if (False):
+        scratch;
+    tail;
+when (True);

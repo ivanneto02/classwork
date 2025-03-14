@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+   <title>The MIL Intermediate Code Representation</title>
+</head>
+
+<body>
+
+<h2><u>The MIL Intermediate Code Representation</u></h2>
+
+<p>
+Your code generator will output "MIL" intermediate code, which can be directly executed by the
+<a href="mil_run">mil_run</a> MIL interpreter.  The MIL interpreter assumes the following
+about a MIL program:
+</p>
+
+<ol>
+<li>Each line in the MIL file contains at most one MIL instruction
+<li>Each line is at most 254 characters long
+<li>All variables are defined before they are used
+<li>Functions begin with a line of the form "func <i>name</i>" and end with the line "endfunc"
+</ol>
+
+<p>
+Please ensure that your generated MIL code meets the above four requirements.
+</p>
+
+
+
+<p>
+As an example, for the <a href="primes.min">primes.min</a> MINI-L program, the corresponding
+MIL code <i>might</i> look like <a href="primes.mil">this</a>.  Note that your generated
+MIL code may look slightly different.  However, your MIL code must behave the same way when
+it is executed by the <code>mil_run</code> MIL interpreter.
+As a final example, the MIL code for the
+MIL code for the <a href="fibonacci.min">fibonacci.min</a> MINI-L program might appear as it
+does <a href="fibonacci.mil">here</a>.
+</p>
+
+<p>
+Each instruction in the MIL intermediate code representation is described in detail in the table below.
+</p>
+
+<h3>Functions in the MIL language</h3>
+Functions in the MIL language start with a line of the form "func <i>name</i>" and end with the line "endfunc".
+Parameters are passed to mil functions with the <tt>param</tt> command, and values are returned from functions.
+Inside functions, arguments are referenced using a positional notation.
+For example, the first argument specified with the param instruction prior to the current function call would be accessible as the <i>name</i> <tt>$0</tt>.
+All arguments are passed by value, and recursive function calls are supported.
+A semantically valid MIL program must contain a function named main.
+All functions (with the exception of main) must return a scalar value.
+The main function must not return any value.
+
+<h3>Syntax and Semantics</h3>
+
+<table border="1" cellpadding="3">
+
+<tr bgcolor="#FFFFCC">
+<td><b>Syntax</b></td> 
+<td><b>Semantics</b></td>
+</tr>
+
+<tr>
+   <td colspan="2" bgcolor="#EEEEEE"><center><i>Function Related Statements</i></center></td>
+</tr>
+
+<TR>
+<TD> <TT>param</TT> <I>name</I> </TD>
+<TD> adds the named parameter to the queue of parameters for the next function call</TD>
+</TR>
+
+<TR>
+<TD> <TT>call</TT> <I>name, dest</I> </TD>
+<TD> calls the function with the specified name, storing the result in <i>dest</i></TD>
+</TR>
+
+<TR>
+<TD> <TT>ret</TT> <I>src</I> </TD>
+<TD> returns from the current function, passing src as the return value. <i>src</i> can be an immediate</TD>
+</TR>
+
+<tr>
+   <td colspan="2" bgcolor="#EEEEEE"><center><i>Variable Declaration Statements</i></center></td>
+</tr>
+
+<TR>
+<TD> <TT>.</TT> <I>name</I> </TD>
+<TD> declares a name for a scalar variable</TD>
+</TR>
+
+<TR>
+<TD> <TT>.[]</TT> <I>name</I>, <I>n</I> </TD>
+
+<TD> declares a name for an array variable consisting of <I>n</I>
+     (must be a positive whole number) elements, with <I>name[0]</I> being
+     the first element</TD>
+</TR>
+
+<tr>
+   <td colspan="2" bgcolor="#EEEEEE"><center><i>Copy Statements</i></center></td>
+</tr>
+
+<TR>
+<TD> <TT>=</TT> <I>dst</I>, <I>src</I> </TD>
+<TD> <I>dst</I> <TT>=</TT> <I>src</I> (<I>src</I> can be an immediate) </TD>
+
+</TR>
+
+<TR>
+<TD> <TT>=</TT> <I>dst</I>, <I>$0</I> </TD>
+<TD> <I>dst</I> <TT>=</TT> <I>$0</I> (<I>$0</I> is the 1st function parameter) </TD>
+
+</TR>
+
+<tr>
+   <td colspan="2" bgcolor="#EEEEEE"><center><i>Array Access Statements</i></center></td>
+</tr>
+
+<TR>
+<TD> <TT>=[]</TT> <I>dst</I>, <I>src</I>, <I>index</I> </TD>
+
+<TD> <I>dst</I> <TT>=</TT> <I>src</I><TT>[</TT><I>index</I><TT>]</TT>
+     (<I>index</I> can be an immediate)</TD>
+</TR>
+
+<TR>
+
+<TD> <TT>[]=</TT> <I>dst</I>, <I>index</I>, <I>src</I> </TD>
+<TD> <I>dst</I><TT>[</TT><I>index</I><TT>]</TT> <TT>=</TT> <I>src</I>
+     (<I>index</I> and <I>src</I> can be immediates)</TD>
+
+</TR>
+
+<tr>
+   <td colspan="2" bgcolor="#EEEEEE"><center><i>Input/Output Statements</i></center></td>
+</tr>
+
+<TR>
+<TD> <TT>.<</TT> <I>dst</I> </TD>
+<TD> read a value into <I>dst</I> from standard in </TD>
+
+</TR>
+
+<TR>
+<TD> <TT>.[]<</TT> <I>dst</I>, <I>index</I> </TD>
+<TD> read a value into <I>dst[index]</I> from standard in </TD>
+
+</TR>
+
+<TR>
+<TD> <TT>.></TT> <I>src</I> </TD>
+<TD> write the value of <I>src</I> into standard out </TD>
+</TR>
+
+<TR>
+<TD> <TT>.[]></TT> <I>src</I>, <I>index</I> </TD>
+<TD> write the value of <I>src[index]</I> into standard out </TD>
+</TR>
+
+<tr>
+   <td colspan="2" bgcolor="#EEEEEE"><center><i>Arithmetic Operator Statements (one or both source operands can be immediates)</i></center></td>
+</tr>
+
+<TR>
+<TD> <TT>+</TT> <I>dst</I>, <I>src1</I>, <I>src2</I> </TD>
+<TD> <I>dst</I> <TT>=</TT> <I>src1</I> <TT>+</TT> <I>src2</I> </TD>
+
+</TR>
+<TR>
+<TD> <TT>-</TT> <I>dst</I>, <I>src1</I>, <I>src2</I> </TD>
+<TD> <I>dst</I> <TT>=</TT> <I>src1</I> <TT>-</TT> <I>src2</I> </TD>
+
+</TR>
+
+<TR>
+<TD> <TT>*</TT> <I>dst</I>, <I>src1</I>, <I>src2</I> </TD>
+<TD> <I>dst</I> <TT>=</TT> <I>src1</I> <TT>*</TT> <I>src2</I> </TD>
+
+</TR>
+
+<TR>
+<TD> <TT>/</TT> <I>dst</I>, <I>src1</I>, <I>src2</I> </TD>
+<TD> <I>dst</I> <TT>=</TT> <I>src1</I> <TT>/</TT> <I>src2</I> </TD>
+
+</TR>
+
+<TR>
+<TD> <TT>%</TT> <I>dst</I>, <I>src1</I>, <I>src2</I> </TD>
+<TD> <I>dst</I> <TT>=</TT> <I>src1</I> <TT>%</TT> <I>src2</I> </TD>
+
+</TR>
+
+<tr>
+   <td colspan="2" bgcolor="#EEEEEE"><center><i>Comparison Operator Statements (one or both source operands can be immediates)</i></center></td>
+</tr>
+
+<TR>
+<TD> <TT><</TT> <I>dst</I>, <I>src1</I>, <I>src2</I> </TD>
+
+<TD> <I>dst</I> <TT>=</TT> <I>src1</I> <TT><</TT> <I>src2</I> </TD>
+</TR>
+
+<TR>
+<TD> <TT><=</TT> <I>dst</I>, <I>src1</I>, <I>src2</I> </TD>
+
+<TD> <I>dst</I> <TT>=</TT> <I>src1</I> <TT><=</TT> <I>src2</I> </TD>
+</TR>
+
+<TR>
+<TD> <TT>!=</TT> <I>dst</I>, <I>src1</I>, <I>src2</I> </TD>
+
+<TD> <I>dst</I> <TT>=</TT> <I>src1</I> <TT>!=</TT> <I>src2</I> </TD>
+</TR>
+<TR>
+<TD> <TT>==</TT> <I>dst</I>, <I>src1</I>, <I>src2</I> </TD>
+
+<TD> <I>dst</I> <TT>=</TT> <I>src1</I> <TT>==</TT> <I>src2</I> </TD>
+</TR>
+
+<TR>
+<TD> <TT>>=</TT> <I>dst</I>, <I>src1</I>, <I>src2</I> </TD>
+
+<TD> <I>dst</I> <TT>=</TT> <I>src1</I> <TT>>=</TT> <I>src2</I> </TD>
+</TR>
+
+<TR>
+<TD> <TT>></TT> <I>dst</I>, <I>src1</I>, <I>src2</I> </TD>
+
+<TD> <I>dst</I> <TT>=</TT> <I>src1</I> <TT>></TT> <I>src2</I> </TD>
+</TR>
+
+<tr>
+   <td colspan="2" bgcolor="#EEEEEE"><center><i>Logical Operator Statements (one or both source operands can be immediates)</i></center></td>
+</tr>
+
+<TR>
+<TD> <TT>||</TT> <I>dst</I>, <I>src1</I>, <I>src2</I> </TD>
+<TD> <I>dst</I> <TT>=</TT> <I>src1</I> <TT>||</TT> <I>src2</I> (logical <TT>OR</TT>) </TD>
+
+</TR>
+
+<TR>
+<TD> <TT>&amp;&amp;</TT> <I>dst</I>, <I>src1</I>, <I>src2</I> </TD>
+<TD> <I>dst</I> <TT>=</TT> <I>src1</I> <TT>&amp;&amp;</TT> <I>src2</I> (logical <TT>AND</TT>)</TD>
+</TR>
+
+<TR>
+<TD> <TT>!</TT> <I>dst</I>, <I>src</I> </TD>
+<TD> <I>dst</I> <TT>=</TT> <TT>!</TT><I>src</I> (logical <TT>NOT</TT>)</TD>
+
+</TR>
+
+<tr>
+   <td colspan="2" bgcolor="#EEEEEE"><center><i>Label Declaration Statements</i></center></td>
+</tr>
+
+<TR>
+<TD> <TT>:</TT> <I>label</I> </TD>
+<TD> declares a <I>label</I> </TD>
+
+</TR>
+
+<tr>
+   <td colspan="2" bgcolor="#EEEEEE"><center><i>Branch Statements</i></center></td>
+</tr>
+
+<TR>
+<TD> <TT>:=</TT> <I>label</I> </TD>
+<TD> <B><TT>goto</TT></B> <I>label</I> </TD>
+
+</TR>
+
+<TR>
+<TD> <TT>?:=</TT> <I>label</I>, <I>predicate</I> </TD>
+<TD> <B><TT>if</TT></B> <I>predicate</I> is <I>true (1)</I>
+
+     <B><TT>goto</TT></B> <I>label</I> </TD>
+</TR>
+
+</table>
+
+
+
+<br>
+
+<hr>
+
+</body>
+</html>

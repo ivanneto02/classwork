@@ -1,0 +1,36 @@
+fun hello(int b, str c):
+
+    int a: 10;
+
+    if (1 < 2):
+        
+        ` int b: 20; ` causes scope error
+        swat b;
+    
+    tail;
+    
+    while (True):
+        scratch;
+    tail;
+
+endfun;
+
+fun hey(int x: 1):
+    x: 2;
+    ` x: "hi"; ` causes a typechecking error
+endfun;
+
+` causes a typechecking error
+```
+fun hey(str x: 1):
+endfun;
+```
+
+` int hello = 23;
+
+` hello_world(1, 2, 3);
+
+` int a: 1;
+b = 1;
+
+` swat abc; ` should cause a semantic error when uncommented

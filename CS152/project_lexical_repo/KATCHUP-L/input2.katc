@@ -1,0 +1,25 @@
+123
+`:h~ey uncomment to get an error from the tilde
+``` 1. multiline comments 
+    2. hi 
+    3. hello 
+```
+
+int a: 1;
+meow("Hello, world!");  `might get error 
+meow(0005);   `simplify to get rid of the leading zeros 
+meow(a); 
+
+true;
+
+fun myFunction(int a, int b):
+    str 123asd112variable_;
+    str variable2;
+    dec pi: 3.14; 
+
+    str var: "hi"; 
+
+    return 10;
+    endfun;
+
+myFunction(3, 5);

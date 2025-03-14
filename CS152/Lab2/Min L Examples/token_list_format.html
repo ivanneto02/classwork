@@ -1,0 +1,347 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+<title>Output Format for Lexical Analyzer</title>
+</head>
+
+<body>
+
+<h2><u>Output Format for Lexical Analyzer</u></h2>
+
+<p>
+Your lexical analyzer should output each token identified from the inputted MINI-L program.
+Each token should appear on a separate line of output, and the tokens should appear in the
+output in the same order as they appear in the inputted MINI-L program.  To facilitate grading,
+the tokens must be outputted in the format described in the table <a href="#table">below</a>.
+</p>
+
+<p>
+There are two types of lexical errors that your lexical analyzer should catch.  They are described <a href="#errors">below</a>.
+</p>
+
+<p>
+Note: for this phase of the project, even syntactically incorrect MINI-L programs may still be
+parsed successfully into a list of tokens.  The next phase of this project is where
+syntax errors will be captured.
+</p>
+
+<hr>
+
+<a name="table"></a>
+<h3>List of Tokens</h3>
+
+<p>
+The following table describes the different kinds of tokens that may be outputted by
+your lexical analyzer.  <i>Comments</i> and <i>whitespace</i> should be ignored by your
+lexical analyzer (you should not output any tokens for these).
+</p>
+
+<br>
+<table border="1" cellpadding="3">
+<tr bgcolor="#FFFFCC">
+   <td><b>Lexical Pattern in the Inputted MINI-L Program</b></td>
+   <td><b>Token that Should Be Outputted</b></td>
+</tr>
+<tr>
+   <td colspan="2" bgcolor="#EEEEEE"><center><i>Reserved Words</i></center></td>
+</tr>
+<tr>
+   <td>function</td>
+   <td>FUNCTION</td>
+</tr>
+<tr>
+   <td>beginparams</td>
+   <td>BEGIN_PARAMS</td>
+</tr>
+<tr>
+   <td>endparams</td>
+   <td>END_PARAMS</td>
+</tr>
+<tr>
+   <td>beginlocals</td>
+   <td>BEGIN_LOCALS</td>
+</tr>
+<tr>
+   <td>endlocals</td>
+   <td>END_LOCALS</td>
+</tr>
+<tr>
+   <td>beginbody</td>
+   <td>BEGIN_BODY</td>
+</tr>
+<tr>
+   <td>endbody</td>
+   <td>END_BODY</td>
+</tr>
+<tr>
+   <td>integer</td>
+   <td>INTEGER</td>
+</tr>
+<tr>
+   <td>array</td>
+   <td>ARRAY</td>
+</tr>
+<tr>
+   <td>of</td>
+   <td>OF</td>
+</tr>
+<tr>
+   <td>if</td>
+   <td>IF</td>
+</tr>
+<tr>
+   <td>then</td>
+   <td>THEN</td>
+</tr>
+<tr>
+   <td>endif</td>
+   <td>ENDIF</td>
+</tr>
+<tr>
+   <td>else</td>
+   <td>ELSE</td>
+</tr>
+<tr>
+   <td>while</td>
+   <td>WHILE</td>
+</tr>
+<tr>
+   <td>do</td>
+   <td>DO</td>
+</tr>
+<tr>
+   <td>beginloop</td>
+   <td>BEGINLOOP</td>
+</tr>
+<tr>
+   <td>endloop</td>
+   <td>ENDLOOP</td>
+</tr>
+<tr>
+   <td>continue</td>
+   <td>CONTINUE</td>
+</tr>
+<tr>
+   <td>break</td>
+   <td>BREAK</td>
+</tr>
+<tr>
+   <td>read</td>
+   <td>READ</td>
+</tr>
+<tr>
+   <td>write</td>
+   <td>WRITE</td>
+</tr>
+<tr>
+   <td>not</td>
+   <td>NOT</td>
+</tr>
+<tr>
+   <td>true</td>
+   <td>TRUE</td>
+</tr>
+<tr>
+   <td>false</td>
+   <td>FALSE</td>
+</tr>
+<tr>
+   <td>return</td>
+   <td>RETURN</td>
+</tr>
+<tr>
+   <td colspan="2" bgcolor="#EEEEEE"><center><i>Arithmetic Operators</i></center></td>
+</tr>
+<tr>
+   <td>-</td>
+   <td>SUB</td>
+</tr>
+<tr>
+   <td>+</td>
+   <td>ADD</td>
+</tr>
+<tr>
+   <td>*</td>
+   <td>MULT</td>
+</tr>
+<tr>
+   <td>/</td>
+   <td>DIV</td>
+</tr>
+<tr>
+   <td>%</td>
+   <td>MOD</td>
+</tr>
+<tr>
+   <td colspan="2" bgcolor="#EEEEEE"><center><i>Comparison Operators</i></center></td>
+</tr>
+<tr>
+   <td>==</td>
+   <td>EQ</td>
+</tr>
+<tr>
+   <td>&lt;&gt;</td>
+   <td>NEQ</td>
+</tr>
+<tr>
+   <td>&lt;</td>
+   <td>LT</td>
+</tr>
+<tr>
+   <td>&gt;</td>
+   <td>GT</td>
+</tr>
+<tr>
+   <td>&lt;=</td>
+   <td>LTE</td>
+</tr>
+<tr>
+   <td>&gt;=</td>
+   <td>GTE</td>
+</tr>
+<tr>
+   <td colspan="2" bgcolor="#EEEEEE"><center><i>Identifiers and Numbers</i></center></td>
+</tr>
+<tr>
+   <td>identifier (e.g., "aardvark", "BIG_PENGUIN", "fLaMInGo_17", "ot73r")</td>
+   <td>IDENT XXXX <font size=-1>[where XXXX is the identifier itself]</font></td>
+</tr>
+<tr>
+   <td>number (e.g., "17", "101", "90210", "0", "8675309")</td>
+   <td>NUMBER XXXX <font size=-1>[where XXXX is the number itself]</font></td>
+</tr>
+<tr>
+   <td colspan="2" bgcolor="#EEEEEE"><center><i>Other Special Symbols</i></center></td>
+</tr>
+<tr>
+   <td>;</td>
+   <td>SEMICOLON</td>
+</tr>
+<tr>
+   <td>:</td>
+   <td>COLON</td>
+</tr>
+<tr>
+   <td>,</td>
+   <td>COMMA</td>
+</tr>
+<tr>
+   <td>(</td>
+   <td>L_PAREN</td>
+</tr>
+<tr>
+   <td>)</td>
+   <td>R_PAREN</td>
+</tr>
+<tr>
+   <td>[</td>
+   <td>L_SQUARE_BRACKET</td>
+</tr>
+<tr>
+   <td>]</td>
+   <td>R_SQUARE_BRACKET</td>
+</tr>
+<tr>
+   <td>:=</td>
+   <td>ASSIGN</td>
+</tr>
+</table>
+<br>
+
+<hr>
+
+<a name="errors"></a>
+<h3>Lexical Errors to Catch</h3>
+
+<p>
+Your lexical analyzer should catch two different types of lexical errors.  If any such error is encountered
+during parsing of a MINI-L program, your lexical analyzer should terminate immediately after reporting the
+error message.  The error message must include information about the line number and column position number within
+the line of the token associated with the error.  The details are below.
+</p>
+
+<p>
+<u>Error Type 1: Unrecognized Symbol</u><br><br>
+
+Your lexical analyzer should report an error and terminate if an unrecognized symbol is encountered that is
+outside of a comment.  For example, consider the following MINI-L function:
+
+<pre>
+01. function test;
+02. beginparams
+03. endparams
+04. beginlocals
+05. n : integer;
+06. endlocals
+07. beginbody
+08.    read n;
+09.    n := n + 1?
+10.    write n;
+11. endbody
+</pre>
+
+In the above program, the "?" symbol at line 5 (which is outside of a comment) is not defined in the
+MINI-L language.  Thus, your lexical analyzer should output an "unrecognized symbol" error when it
+encounters the "?" (along with line number and position number information of the problematic symbol).
+For example:
+
+<pre>
+Error at line 9, column 14: unrecognized symbol "?"
+</pre>
+
+</p>
+
+<br>
+
+<p>
+<u>Error Type 2: Invalid Identifier</u><br><br>
+
+Your lexical analyzer should report an error and terminate if an invalid identifier is encountered.
+This can occur if the identifier starts with a digit or an underscore, or if the identifier
+ends with an underscore.  For example, consider the following two MINI-L functions:
+
+<pre>
+01. function test1;
+02. beginparams
+03. endparams
+04. beginlocals
+05. 2n : integer;
+06. endlocals
+07. beginbody
+08. endbody
+</pre>
+
+<pre>
+01. function test2;
+02. beginparams
+03. endparams
+04. beginlocals
+05. n_ : integer;
+06. endlocals
+07. beginprogram
+08. endprogram
+</pre>
+
+In both of the above functions, the identifier declared at line 5 is invalid.  Thus, in both
+of these cases, your lexical analyzer should output an "invalid identifier" error when it
+encounters either the "2n" or the "n_".  For example, in the first function above:
+
+<pre>
+Error at line 5, column 0: identifier "2n" must begin with a letter
+</pre>
+
+And in the second function above:
+
+<pre>
+Error at line 5	, column 0: identifier "n_" cannot end with an underscore
+</pre>
+
+</p>
+
+<hr>
+
+</body>
+
+</html>

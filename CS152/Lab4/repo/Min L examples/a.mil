@@ -1,0 +1,92 @@
+func main
+. n
+.[] a, 1000
+. i
+. j
+. x
+. sqrt_n
+.< n
+= x, n
+: loop_begin0
+. __temp__0
+/ __temp__0, n, x
+. __temp__1
+> __temp__1, x, __temp__0
+! __temp__1, __temp__1
+?:= loop_end0, __temp__1
+. __temp__2
+/ __temp__2, n, x
+. __temp__3
++ __temp__3, x, __temp__2
+. __temp__4
+/ __temp__4, __temp__3, 2
+= x, __temp__4
+:= loop_begin0
+: loop_end0
+= sqrt_n, x
+= i, 2
+: loop_begin1
+. __temp__5
+<= __temp__5, i, n
+! __temp__5, __temp__5
+?:= loop_end1, __temp__5
+[]= a, i, 0
+. __temp__6
++ __temp__6, i, 1
+= i, __temp__6
+:= loop_begin1
+: loop_end1
+= i, 2
+: loop_begin2
+. __temp__7
+<= __temp__7, i, sqrt_n
+! __temp__7, __temp__7
+?:= loop_end2, __temp__7
+. __temp__8
+=[] __temp__8, a, i
+. __temp__9
+== __temp__9, __temp__8, 0
+! __temp__9, __temp__9
+?:= else0, __temp__9
+. __temp__10
++ __temp__10, i, i
+= j, __temp__10
+: loop_begin3
+. __temp__11
+<= __temp__11, j, n
+! __temp__11, __temp__11
+?:= loop_end3, __temp__11
+[]= a, j, 1
+. __temp__12
++ __temp__12, j, i
+= j, __temp__12
+:= loop_begin3
+: loop_end3
+: else0
+: endif0
+. __temp__13
++ __temp__13, i, 1
+= i, __temp__13
+:= loop_begin2
+: loop_end2
+= i, 2
+: loop_begin4
+. __temp__14
+<= __temp__14, i, n
+! __temp__14, __temp__14
+?:= loop_end4, __temp__14
+. __temp__15
+=[] __temp__15, a, i
+. __temp__16
+== __temp__16, __temp__15, 0
+! __temp__16, __temp__16
+?:= else1, __temp__16
+.> i
+: else1
+: endif1
+. __temp__17
++ __temp__17, i, 1
+= i, __temp__17
+:= loop_begin4
+: loop_end4
+endfunc

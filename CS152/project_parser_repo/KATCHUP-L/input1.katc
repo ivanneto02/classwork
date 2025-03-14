@@ -1,0 +1,16 @@
+`:h~ey uncomment to get an error from the tilde (line 2, column 3)
+
+fun myFunction(int a: 10, int b: 20):
+    str variable1;
+    str variable2;
+    ` comment 1
+    ` comment 2
+    ```
+    ~ this tilde doesn't cause an error because it's in a comment
+    comment 3
+    ```
+    `~ uncomment to get an error from the tilde (line 13, column 7)
+    swat 10;
+    endfun;
+
+myFunction(3, 10);

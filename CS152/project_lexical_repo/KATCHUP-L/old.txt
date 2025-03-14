@@ -1,0 +1,39 @@
+/* SM VERSION
+{BEGIN_INLINE_COMMENT} {
+    // Source: Louden, p. 88 for /* ... */
+    char c;
+    int done = FALSE;
+    ECHO;
+    do
+    { while ((c=input()) != '*') // '`'?
+        putchar(c);
+    putchar(c);
+    while ((c=input()) == '*') // '`'?
+        putchar(c);
+    putchar(c);
+    if (c == '/') done = TRUE; // '`'?
+    } while (!done);
+  }
+.		{printf("Error\n");}
+*/
+
+/* Token counter version main
+int main( int argc, char **argv)
+{
+    ++argv, --argc;  /* skip over program name */
+    char* fileName = argv[0];
+
+    printf("%s\n", fileName);
+
+    // call defined function
+    readFromFile(fileName);
+
+    yyin = stdin;
+    yylex();
+
+    printf("Integers: %d", num);
+    printf("Operators: %d", oper);
+    printf("Parentheses: %d", paren);
+    printf("Equal signs: %d", equ);
+}
+*/

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+<title>Output Format for Parser</title>
+</head>
+
+<body>
+
+<h2><u>Output Format for Parser</u></h2>
+
+<h3>Production Rules</h3>
+
+<p>
+For grading purposes, we would like your parser to output the list of productions taken
+while parsing an inputted sequence of lexical tokens.  These productions should be outputted
+in the order in which they are actually taken during parsing.  The general format of each production
+should be as follows:
+</p>
+
+<p>
+<code>
+LEFT-HAND-SIDE -> RIGHT-HAND-SIDE
+</code>
+</p>
+
+<p>
+We do not specify the detailed format for each production (such as the names of
+the terminals and non-terminals used, and which symbols are present in each production).
+This is because these details will depend upon the particular grammar you create.
+However, we ask that you pay attention to precendence so that the relative order
+of the taken productions adheres to precedence rules (such as "+" and "-" having
+lower precendence than "*" and "/").  Although precedence will not really be important
+until the next phase of the project, this will make it easier for us during grading
+of the current phase.
+</p>
+
+<p>
+The actual output of your parser may differ depending upon the grammar you write.
+</p>
+
+<hr>
+
+<h3>Syntax Error Messages</h3>
+
+<p>
+An important function of a parser is to emit helpful syntax error messages in the event of a syntax
+error.  Accordingly, your parser must emit a syntax error message whenever a syntax
+error is present in the inputted sequence of tokens, and your parser must not emit any
+syntax error messages whenever an inputted sequence of tokens is syntactically correct.
+</p>
+
+<p>
+You are free to choose the particular format of each syntax error message outputted by
+your parser.  At a minimum, each syntax error message should include the source code
+line number at which the syntax error is encountered.
+</p>
+
+<p>
+Sometimes, multiple syntax errors may exist in an inputted sequence of tokens.
+It can be helpful for a parser to try to emit syntax error messages for every syntax error, so that
+a programmer can attempt to fix multiple errors before having to re-compile the program.
+As a result, your parser should continue parsing even after a syntax error is encountered and
+an appropriate syntax error message is emitted.  However, sometimes syntax errors may
+"confuse" a parser and so some syntax error messages may be extraneous.  Therefore,
+it is okay for your parser to emit some extraneous syntax error messages <i>as long as
+the very first syntax error message outputted by your parser accurately describes the first true syntax error
+that occurs in the inputted sequence of tokens</i>.
+</p>
+
+<p>
+<i>Example 1</i>:
+</p>
+
+<code>
+1. function main; <br>
+2. beginparams <br>
+3. endparams <br>
+4. beginlocals <br>
+5. a : integer; <br>
+6. endlocals <br>
+7. beginbody <br>
+8. a = 1 + 2 * 3; <br>
+9. endbody <br>
+</code>
+
+<p>
+In the above MINI-L program, the programmer tries to assign to variable <code>a</code>
+at line 8, but uses the incorrect assignment operator (it should be <code>:=</code>).  As
+a result, when parsing the above MINI-L program, the following helpful error message
+might be emitted: <code>Syntax error at line 8: ":=" expected</code>
+</p>
+
+<p>
+<i>Example 2</i>:
+</p>
+
+<code>
+1. function main; <br>
+2. beginparams <br>
+3. endparams <br>
+4. beginlocals <br>
+5. a integer; <br>
+6. endlocals <br>
+7. beginbody <br>
+8. a := 1 + 2 * 3; <br>
+9. endbody <br>
+</code>
+
+<p>
+In the above MINI-L program, the programmer forgets the colon between <code>a</code>
+and <code>integer</code> at line 5.  The following error message might be emitted by
+the parser in this case: <code>Syntax error at line 5: invalid declaration</code>
+</p>
+
+<hr>
+
+</body>
+
+</html>

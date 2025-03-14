@@ -1,0 +1,12 @@
+int a: (1 + 2) * 3 + 4;
+
+int b: 10;
+
+a : 10; `fine`
+b : 10; `fine`
+
+` Error causes ---
+int c : "hello"; ` Gives error because int != str data type`
+a : "hello"; `Gives error because int != str data type` 
+d : 10; ` Gives error because there is no d!`
+` ----

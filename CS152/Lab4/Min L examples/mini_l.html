@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+   <title>The MINI-L Source Code Language</title>
+</head>
+
+<body>
+
+<h2><u>The MINI-L Source Code Language</u></h2>
+
+<h3>MINI-L Language Description</h3>
+<p>
+The MINI-L language provides the following program constructs.
+
+<ol>
+<li>Integer scalar variables.
+<li>One-dimensional arrays of integers.
+<li>Assignment statements.
+<li>While and Do-While loops.
+<li>Continue statement.	
+<li>If-then-else statements.
+<li>Read and write statements.
+<li>Comments.
+<li>Functions.
+</ol>
+</p>
+
+<p>
+Here are some additional details of the MINI-L language.
+
+<ul>
+<li>A <i>comment</i> is introduced by "##" and extends to the end of the current line.
+<li>MINI-L is <i>case sensitive</i>.  All reserved words are expressed in lower case.
+<li>A valid <i>identifier</i> must begin with a letter, may be followed by additional
+letters, digits, or underscores, and cannot end in an underscore.
+<li>Whitespace in MINI-L programs can occur due to regular blank spaces, tabs, or newlines.
+</ul>
+</p>
+
+<p>
+Functions in MINI-L take some constant number of scalar arguments, and return a single scalar result.
+All arguments are passed by value (there are no reference arguments).
+A syntactically and semantically valid MINI-L program must contain a function named main, which takes no arguments
+and returns no result (the main function is unique in this regard).
+</p>
+
+<p>
+The detailed syntax for the MINI-L language is described <a href="syntax.html">here</a>. The following table 
+lists the precedence and associativity of all the operators in the MINI-L languages.  
+Operators are listed top to bottom, in descending precedence. 
+</p>
+
+<table border="1">
+<tbody><tr>
+<th style="text-align: left">Precedence</th>
+<th style="text-align: left">Operator</th>
+<th style="text-align: left">Description</th>
+<th style="text-align: left">Associativity</th>
+</tr>
+<tr>
+<th >0</th>
+<td><code>()</code></td>
+<td>Function calls</td>
+<td>Left-to-right</td>
+</tr>
+</tr>
+<tr>
+<th >1</th>
+<td><code>[]</code></td>
+<td>Array subscripting</td>
+<td>Left-to-right</td>
+</tr>
+<tr>
+<th>2</th>
+<td><code>-</code></td>
+<td>Unary minus</td>
+<td>Right-to-left</td>
+</tr>
+<tr>
+<th rowspan="3">3</th>
+<td><code>*</code></td>
+<td>Multiplication</td>
+<td style="vertical-align: top" rowspan="12">Left-to-right</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>Division</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td> Remainder</td>
+</tr>
+<tr>
+<th rowspan="2">4</th>
+<td><code>+</code></td>
+<td>Addition</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Subtraction</td>
+</tr>
+
+<tr>
+<th rowspan="6">5</th>
+<td><code>&lt;</code></td>
+<td>For relational operators  < </td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>For relational operators <= </td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>For relational operators > </td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>For relational operators >= </td>
+</tr>
+<tr>
+<td><code>==</code></td>
+<td>For relational operator == </td>
+</tr>
+<tr>
+<td><code><></code></td>
+<td>For relational operator != </td>
+</tr>
+<tr>
+<tr>
+<th>6</th>
+<td><code>not</code></td>
+<td>Logical not</td>
+<td>Right-to-left</td>
+</tr>
+<tr>
+<tr>
+<tr>
+<th >7</th>
+<td><code>:=</code></td>
+<td>Assignment </td>
+<td>Right-to-left</td>
+</tr>
+</tbody></table>
+
+
+<h3>MINI-L Example Programs</h3>
+<p>
+
+<ul>
+<li> <a href="primes.min">primes.min</a>
+</ul>
+</p>
+
+<hr>
+
+</body>
+</html>

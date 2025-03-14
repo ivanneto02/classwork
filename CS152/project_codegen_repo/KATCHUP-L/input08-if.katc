@@ -1,0 +1,68 @@
+` Expect 12 of program -> statement program (including this comment)
+
+if (1 = 2):
+    True;
+tail;
+
+if (1 = 2):
+tail;
+
+if (not (1 = 2)):
+tail;
+
+if (!(1 = 2)):
+tail;
+
+if (not(not(not (True = False)))):
+tail;
+
+if (True):
+tail;
+
+if (1 = 2):
+    True;
+other:
+    True;
+tail;
+
+if (1 = 2):
+    True;
+other (1 = 1):
+    True;
+tail;
+
+if (1 = 2):
+    True;
+other (1 = 1):
+    True;
+other (1 = 1):
+    True;
+other (1 = 1):
+    True;
+tail;
+
+if (1 = 2):
+    True;
+other (1 = 1):
+    True;
+other (1 = 1):
+    True;
+other (1 = 1):
+    True;
+other:
+    True;
+tail;
+
+if (1 < 2):
+    if (1 = 2):
+        if (1 != 3):
+            if (1 > 2):
+                if (1 = 2):
+                tail;
+            tail;
+        other (2 = 3):
+        other (True):
+            False;
+        tail;
+    tail;
+tail;

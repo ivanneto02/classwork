@@ -1,0 +1,13 @@
+str variable_;
+
+int a: 1;
+meow("Hello, world!");  `might get error 
+meow(5);
+meow(a); 
+
+arr{2} katarry;
+str b;
+int c;
+pounce(b);
+pounce(katarry{1});
+pounce(d); ` should raise semantic error (d doesn't exist)
