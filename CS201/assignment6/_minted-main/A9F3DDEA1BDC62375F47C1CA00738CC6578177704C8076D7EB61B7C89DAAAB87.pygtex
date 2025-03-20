@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{x}{/* Already done immediately before this */}
+\PYG{x}{compute global names Globals and Blocks(x)}
+\PYG{x}{for each block B in CFG}
+\PYG{x}{    compute DF(B)}
+
+\PYG{x}{for each name x in Globals}
+\PYG{x}{    WorkList \PYGZlt{}\PYGZhy{} Blocks(x)}
+\PYG{x}{    while WorkList != emptyset}
+\PYG{x}{        remove block B from WorkList}
+\PYG{x}{        for each block B\PYGZus{}df in DF(B)}
+
+\end{Verbatim}

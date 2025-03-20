@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{counter}\PYG{p}{[}\PYG{n}{n}\PYG{p}{]}
+\PYG{n}{push}\PYG{+w}{ }\PYG{n}{n\PYGZus{}i}\PYG{+w}{ }\PYG{n}{onto}\PYG{+w}{ }\PYG{n}{stack}\PYG{p}{[}\PYG{n}{n}\PYG{p}{]}
+\PYG{n}{counter}\PYG{p}{[}\PYG{n}{n}\PYG{p}{]}\PYG{o}{++}
+\PYG{k}{return}\PYG{+w}{ }\PYG{n}{n\PYGZus{}i}
+\end{Verbatim}

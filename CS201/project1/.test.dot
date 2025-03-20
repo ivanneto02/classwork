@@ -1,0 +1,5 @@
+digraph "CFG for 'test' function" {
+	label="CFG for 'test' function";
+
+	Node0x5558f96392a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{%3:\l  %4 = alloca i32, align 4\l  %5 = alloca double, align 8\l  %6 = alloca i8, align 1\l  %7 = alloca double, align 8\l  %8 = alloca i8, align 1\l  store i32 %0, ptr %4, align 4\l  store double %1, ptr %5, align 8\l  store i8 %2, ptr %6, align 1\l  %9 = load i32, ptr %4, align 4\l  %10 = sitofp i32 %9 to double\l  %11 = load double, ptr %5, align 8\l  %12 = fmul double %10, %11\l  store double %12, ptr %7, align 8\l  %13 = load i8, ptr %6, align 1\l  store i8 %13, ptr %8, align 1\l  ret void\l}"];
+}

@@ -1,0 +1,24 @@
+digraph "CFG for 'main' function" {
+	label="CFG for 'main' function";
+
+	Node0x56122f2d8e60 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{%0:\l  %1 = alloca i32, align 4\l  %2 = alloca i32, align 4\l  %3 = alloca i32, align 4\l  store i32 0, ptr %1, align 4\l  store i32 10, ptr %2, align 4\l  call void @test(i32 noundef 10, double noundef 1.010000e+01, i8 noundef\l... signext 97)\l  %4 = load i32, ptr %2, align 4\l  %5 = icmp eq i32 %4, 10\l  br i1 %5, label %6, label %9\l|{<s0>T|<s1>F}}"];
+	Node0x56122f2d8e60:s0 -> Node0x56122f2dc4e0;
+	Node0x56122f2d8e60:s1 -> Node0x56122f2dc570;
+	Node0x56122f2dc4e0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#ef886b70",label="{%6:\l6:                                                \l  %7 = load i32, ptr %2, align 4\l  %8 = mul nsw i32 %7, 10\l  store i32 %8, ptr %3, align 4\l  br label %19\l}"];
+	Node0x56122f2dc4e0 -> Node0x56122f2d8d70;
+	Node0x56122f2dc570 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#ef886b70",label="{%9:\l9:                                                \l  %10 = load i32, ptr %2, align 4\l  %11 = icmp eq i32 %10, 20\l  br i1 %11, label %12, label %15\l|{<s0>T|<s1>F}}"];
+	Node0x56122f2dc570:s0 -> Node0x56122f2dc890;
+	Node0x56122f2dc570:s1 -> Node0x56122f2dc8e0;
+	Node0x56122f2dc890 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f1ccb870",label="{%12:\l12:                                               \l  %13 = load i32, ptr %2, align 4\l  %14 = mul nsw i32 %13, 20\l  store i32 %14, ptr %3, align 4\l  br label %18\l}"];
+	Node0x56122f2dc890 -> Node0x56122f2dcbb0;
+	Node0x56122f2dc8e0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f1ccb870",label="{%15:\l15:                                               \l  %16 = load i32, ptr %2, align 4\l  %17 = mul nsw i32 %16, 30\l  store i32 %17, ptr %3, align 4\l  br label %18\l}"];
+	Node0x56122f2dc8e0 -> Node0x56122f2dcbb0;
+	Node0x56122f2dcbb0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#ef886b70",label="{%18:\l18:                                               \l  br label %19\l}"];
+	Node0x56122f2dcbb0 -> Node0x56122f2d8d70;
+	Node0x56122f2d8d70 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{%19:\l19:                                               \l  %20 = call i32 (ptr, ...) @printf(ptr noundef @.str)\l  ret i32 0\l}"];
+}
+digraph "CFG for 'test' function" {
+	label="CFG for 'test' function";
+
+	Node0x56122f2dd290 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{%3:\l  %4 = alloca i32, align 4\l  %5 = alloca double, align 8\l  %6 = alloca i8, align 1\l  %7 = alloca double, align 8\l  %8 = alloca i8, align 1\l  store i32 %0, ptr %4, align 4\l  store double %1, ptr %5, align 8\l  store i8 %2, ptr %6, align 1\l  %9 = load i32, ptr %4, align 4\l  %10 = sitofp i32 %9 to double\l  %11 = load double, ptr %5, align 8\l  %12 = fmul double %10, %11\l  store double %12, ptr %7, align 8\l  %13 = load i8, ptr %6, align 1\l  store i8 %13, ptr %8, align 1\l  ret void\l}"];
+}

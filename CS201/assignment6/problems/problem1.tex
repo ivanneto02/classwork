@@ -1,0 +1,61 @@
+\noindent\textbf{Problem 1:} Convert the following CFG to a semi-pruned SSA form, following the three major steps:
+
+\begin{itemize}
+    \item[1)] Compute the dominance frontier for each basic block; 
+    \item[2)] Insert phi-functions based on Dominance Frontier and Global Names; 
+    \item[3)] Rename variables with counters and stacks.
+\end{itemize}
+
+\vskip 0.1in
+
+\noindent \textit{[Note: to find global names, you may skip the entry block, whose UEVar does not generate any actual global names.]}
+
+\vskip 0.3in
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance = 9mm and 14mm,
+    nodestyle/.style = {draw,
+                        minimum width=8em,
+                        minimum height=2em,
+                        align=left,
+                        font=\ttfamily},
+    arr/.style       = {very thick,
+                       -latex}
+]
+\node (q0) [nodestyle, label=left:\textbf{A}] {
+$a \leftarrow \_a$ \\
+$b \leftarrow \_b $ \\
+$c \leftarrow a + b$ \\
+$b \leftarrow b * c$
+};
+\node (q1) [nodestyle, below=of q0, label=left:\textbf{B}]    {
+$g \leftarrow b * c$ \\
+$f \leftarrow b$
+};
+\node (q2) [nodestyle,below=of q1, xshift=-6em, label=left:\textbf{C}] {
+$e \leftarrow a + f$ \\
+$g \leftarrow b * c$
+};
+\draw[arr] (q0) -- (q1);
+\draw[arr] (q1) -- (q2);
+\node (q3) [nodestyle,below=of q1, xshift=6em, label=left:\textbf{D}] {
+$e \leftarrow a + b$ \\
+};
+\draw[arr] (q1) -- (q3);
+\node (q4) [nodestyle,below=of q3, xshift=-6em, label=left:\textbf{E}] {
+$m \leftarrow b * c$ \\
+$g \leftarrow a$
+};
+\draw[arr] (q2) -- (q4);
+\draw[arr] (q3) -- (q4);
+\node (q5) [nodestyle, below=of q4, label=left:\textbf{F}] {
+$b \leftarrow g + f$ \\
+$g \leftarrow m + n$
+};
+\draw[arr] (q4) -- (q5);
+\draw[arr] (q4) .. controls +(right:5cm) and +(right:5cm) .. (q1)
+    node foreach \p in {0, 0.25, ...,1} [sloped, above, pos=\p]{};
+
+\end{tikzpicture}
+\end{center}

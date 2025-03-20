@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Globals}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{emptyset}
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{each}\PYG{+w}{ }\PYG{n}{block}\PYG{+w}{ }\PYG{n}{B}\PYG{+w}{ }\PYG{n}{in}\PYG{+w}{ }\PYG{n}{the}\PYG{+w}{ }\PYG{n}{CFG}
+\PYG{+w}{    }\PYG{n}{VarKill}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{emptyset}
+\PYG{+w}{    }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{each}\PYG{+w}{ }\PYG{n}{operator}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{y}\PYG{+w}{ }\PYG{n}{op}\PYG{+w}{ }\PYG{n}{z}\PYG{+w}{ }\PYG{n}{in}\PYG{+w}{ }\PYG{n}{B}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{in}\PYG{+w}{ }\PYG{n}{order}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{n}{y}\PYG{+w}{ }\PYG{n}{not}\PYG{+w}{ }\PYG{n}{in}\PYG{+w}{ }\PYG{n}{VarKill}\PYG{+w}{ }\PYG{n}{then}
+\PYG{+w}{            }\PYG{n}{Globals}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{Globals}\PYG{+w}{ }\PYG{k}{union}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{n}{y}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{n}{z}\PYG{+w}{ }\PYG{n}{not}\PYG{+w}{ }\PYG{n}{in}\PYG{+w}{ }\PYG{n}{varKill}\PYG{+w}{ }\PYG{n}{then}
+\PYG{+w}{            }\PYG{n}{Globals}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{Globals}\PYG{+w}{ }\PYG{k}{union}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{n}{z}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{n}{VarKill}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{VarKill}\PYG{+w}{ }\PYG{k}{union}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{n}{x}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{n}{Blocks}\PYG{p}{\PYGZob{}}\PYG{n}{x}\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{Blocks}\PYG{p}{\PYGZob{}}\PYG{n}{x}\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{union}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{n}{B}\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{c+c1}{// defining blocks}
+\end{Verbatim}

@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/* Already done immediately before this */}
+\PYG{n}{compute}\PYG{+w}{ }\PYG{n}{global}\PYG{+w}{ }\PYG{n}{names}\PYG{+w}{ }\PYG{n}{Globals}\PYG{+w}{ }\PYG{n}{and}\PYG{+w}{ }\PYG{n}{Blocks}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{each}\PYG{+w}{ }\PYG{n}{block}\PYG{+w}{ }\PYG{n}{B}\PYG{+w}{ }\PYG{n}{in}\PYG{+w}{ }\PYG{n}{CFG}
+\PYG{+w}{    }\PYG{n}{compute}\PYG{+w}{ }\PYG{n}{DF}\PYG{p}{(}\PYG{n}{B}\PYG{p}{)}
+
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{each}\PYG{+w}{ }\PYG{n}{name}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{n}{in}\PYG{+w}{ }\PYG{n}{Globals}
+\PYG{+w}{    }\PYG{n}{WorkList}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{Blocks}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{while}\PYG{+w}{ }\PYG{n}{WorkList}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{n}{emptyset}
+\PYG{+w}{        }\PYG{n}{remove}\PYG{+w}{ }\PYG{n}{block}\PYG{+w}{ }\PYG{n}{B}\PYG{+w}{ }\PYG{n}{from}\PYG{+w}{ }\PYG{n}{WorkList}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{each}\PYG{+w}{ }\PYG{n}{block}\PYG{+w}{ }\PYG{n}{B\PYGZus{}df}\PYG{+w}{ }\PYG{n}{in}\PYG{+w}{ }\PYG{n}{DF}\PYG{p}{(}\PYG{n}{B}\PYG{p}{)}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{n}{B\PYGZus{}df}\PYG{+w}{ }\PYG{n}{has}\PYG{+w}{ }\PYG{n}{no}\PYG{+w}{ }\PYG{n}{phi}\PYG{o}{\PYGZhy{}}\PYG{n}{function}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{n}{then}
+\PYG{+w}{                }\PYG{n}{insert}\PYG{+w}{ }\PYG{n}{phi}\PYG{o}{\PYGZhy{}}\PYG{n}{function}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{n}{in}\PYG{+w}{ }\PYG{n}{B\PYGZus{}df}
+\PYG{+w}{                }\PYG{n}{WorkList}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{WorkList}\PYG{+w}{ }\PYG{k}{union}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{n}{B\PYGZus{}df}\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

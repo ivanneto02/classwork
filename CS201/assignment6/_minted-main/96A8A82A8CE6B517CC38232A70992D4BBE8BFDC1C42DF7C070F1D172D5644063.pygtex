@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{each}\PYG{+w}{ }\PYG{n}{phi}\PYG{o}{\PYGZhy{}}\PYG{n}{function}\PYG{+w}{ }\PYG{n}{in}\PYG{+w}{ }\PYG{n}{B}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{phi}\PYG{p}{(...)}
+\PYG{+w}{    }\PYG{n}{rename}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{n}{as}\PYG{+w}{ }\PYG{n}{NewName}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{each}\PYG{+w}{ }\PYG{n}{operation}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}x \PYGZlt{}\PYGZhy{} y op z\PYGZdq{}}\PYG{+w}{ }\PYG{n}{in}\PYG{+w}{ }\PYG{n}{B}
+\PYG{+w}{    }\PYG{n}{rewrite}\PYG{+w}{ }\PYG{n}{y}\PYG{+w}{ }\PYG{n}{as}\PYG{+w}{ }\PYG{n}{top}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{stack}\PYG{p}{[}\PYG{n}{y}\PYG{p}{])}
+\PYG{+w}{    }\PYG{n}{rewrite}\PYG{+w}{ }\PYG{n}{z}\PYG{+w}{ }\PYG{n}{as}\PYG{+w}{ }\PYG{n}{top}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{stack}\PYG{p}{[}\PYG{n}{z}\PYG{p}{])}
+\PYG{+w}{    }\PYG{n}{rewrite}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{n}{as}\PYG{+w}{ }\PYG{n}{NewName}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{each}\PYG{+w}{ }\PYG{n}{successor}\PYG{+w}{ }\PYG{n}{of}\PYG{+w}{ }\PYG{n}{B}\PYG{+w}{ }\PYG{n}{in}\PYG{+w}{ }\PYG{n}{the}\PYG{+w}{ }\PYG{n}{CFG}
+\PYG{+w}{    }\PYG{n}{rewrite}\PYG{+w}{ }\PYG{n}{appropriate}\PYG{+w}{ }\PYG{n}{phi}\PYG{+w}{ }\PYG{n}{parameters}
+
+\PYG{c+c1}{// pre\PYGZhy{}order traversal on dom tree}
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{each}\PYG{+w}{ }\PYG{n}{successor}\PYG{+w}{ }\PYG{n}{S}\PYG{+w}{ }\PYG{n}{of}\PYG{+w}{ }\PYG{n}{B}\PYG{+w}{ }\PYG{n}{in}\PYG{+w}{ }\PYG{n}{the}\PYG{+w}{ }\PYG{n}{dom}\PYG{+w}{ }\PYG{n}{tree}
+\PYG{+w}{    }\PYG{n}{Rename}\PYG{p}{(}\PYG{n}{S}\PYG{p}{)}
+
+\PYG{c+c1}{// back to previous scope}
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{each}\PYG{+w}{ }\PYG{n}{operation}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}x \PYGZlt{}\PYGZhy{} y op z\PYGZdq{}}\PYG{+w}{ }\PYG{n}{in}\PYG{+w}{ }\PYG{n}{B}
+\PYG{+w}{    }\PYG{n}{pop}\PYG{p}{(}\PYG{n}{stack}\PYG{p}{[}\PYG{n}{x}\PYG{p}{])}
+
+\end{Verbatim}

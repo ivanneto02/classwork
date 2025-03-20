@@ -1,0 +1,1056 @@
+
+\vskip 0.2in
+
+\noindent \textbf{Solution 1):}
+
+\setlength{\arrayrulewidth}{0.5mm}
+\renewcommand{\arraystretch}{2.5}
+
+\noindent
+\begin{tabularx}{1.0\textwidth}{|X|X|X|X|X|X|X|}
+\hline
+\textbf{Block} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{D} & \textbf{E} & \textbf{F} \\
+\hline
+\textbf{DF} & - & B & E & E & B & - \\
+\hline
+\end{tabularx}
+
+
+\vskip 0.3in
+
+\newpage
+
+\noindent \textbf{Solution 2):}
+
+\noindent The first step in inserting the $\phi$-functions is calculating the global names - names
+that live across blocks.
+
+\vskip 0.1in
+
+\noindent To do this, I use the following algorithm given in lecture:
+
+\begin{minted}
+[
+    bgcolor=gray!20,
+    baselinestretch=1.2,
+    frame=lines,
+    framesep=5mm,
+]{c}
+Globals <- emptyset
+for each block B in the CFG
+    VarKill <- emptyset
+    for each operator x <- y op z in B, in order
+        if y not in VarKill then
+            Globals <- Globals union {y}
+        if z not in varKill then
+            Globals <- Globals union {z}
+        VarKill <- VarKill union {x}
+        Blocks{x} <- Blocks{x} union {B} // defining blocks
+\end{minted}
+
+\vskip 0.2in
+
+\noindent Running this algorithm, the following definition blocks are computed:
+
+\noindent
+\begin{tabularx}{1.0\textwidth}{
+    |X|X|X|X|X|X|X|X|X|
+}
+\hline
+\textbf{name} & a & b & c & f & g & e & m & n \\
+\hline
+\textbf{DB(s)} & $\{A\}$ & $\{A, F\}$ & $\{A\}$ & $\{B\}$ & $\{CEFB\}$ & $\{C, D\}$ & $\{E\}$ & - \\
+\hline
+\end{tabularx}
+
+\textit{Note: DB(s) means defining block(s)}
+
+\vskip 0.2in
+
+\noindent Similarly, the following global names are computed
+
+\vskip 0.1in
+
+\noindent Globals = $\{ a, b, c, g, f, m, n\}$
+
+\vskip 0.1in
+
+\textit{Note: I skip the entry block because UEVar does not generate any actual global names.}
+
+\vskip 0.2in
+
+\noindent I use the following algorithm given in the lecture recording to insert
+the $\phi$-functions:
+
+\begin{minted}
+[
+    bgcolor=gray!20,
+    baselinestretch=1.2,
+    frame=lines,
+    framesep=5mm,
+]{c}
+/* Already done immediately before this */
+compute global names Globals and Blocks(x)
+for each block B in CFG
+    compute DF(B)
+
+for each name x in Globals
+    WorkList <- Blocks(x)
+    while WorkList != emptyset
+        remove block B from WorkList
+        for each block B_df in DF(B)
+            if B_df has no phi-function for x then
+                insert phi-function for x in B_df
+                WorkList <- WorkList union {B_df}
+\end{minted}
+
+\vskip 0.2in
+
+\noindent I show each global name being inserted into the CFG:
+
+\vskip 0.2in
+
+\noindent For global name $b$:
+
+\vskip 0.1in
+
+\noindent No $\phi$-functions are inserted because both blocks $A$ and $F$ do not have a dominance frontier. Therefore we 
+cannot run the inner for loop in the algorithm.
+
+\vskip 0.2in
+
+\noindent For global name $a$:
+
+\vskip 0.1in
+
+\noindent No $\phi$-functions are inserted because block $A$ does not have a dominance frontier. Therefore we 
+cannot run the inner for loop in the algorithm.
+
+\vskip 0.2in
+
+\noindent For global name $c$:
+
+\vskip 0.1in
+
+\noindent No $\phi$-functions are inserted because block $A$ does not have a dominance frontier. Therefore we 
+cannot run the inner for loop in the algorithm.
+
+\vskip 0.2in
+
+\noindent For global name $g$:
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance = 9mm and 14mm,
+    nodestyle/.style = {draw,
+                        minimum width=8em,
+                        minimum height=2em,
+                        align=left,
+                        font=\ttfamily},
+    arr/.style       = {very thick,
+                        -latex}
+]
+\node (q0) [nodestyle, label=left:\textbf{A}] {
+$a \leftarrow \_a$ \\
+$b \leftarrow \_b $ \\
+$c \leftarrow a + b$ \\
+$b \leftarrow b * c$
+};
+\node (q1) [nodestyle, below=of q0, label=left:\textbf{B}]    {
+\textcolor{red}{$g \leftarrow \phi(g, g)$} \\
+$g \leftarrow b * c$ \\
+$f \leftarrow b$
+};
+\node (q2) [nodestyle,below=of q1, xshift=-6em, label=left:\textbf{C}] {
+$e \leftarrow a + f$ \\
+$g \leftarrow b * c$
+};
+\draw[arr] (q0) -- (q1);
+\draw[arr] (q1) -- (q2);
+\node (q3) [nodestyle,below=of q1, xshift=6em, label=left:\textbf{D}] {
+$e \leftarrow a + b$ \\
+};
+\draw[arr] (q1) -- (q3);
+\node (q4) [nodestyle,below=of q3, xshift=-6em, label=left:\textbf{E}] {
+\textcolor{red}{$g \leftarrow \phi(g, g)$} \\
+$m \leftarrow b * c$ \\
+$g \leftarrow a$
+};
+\draw[arr] (q2) -- (q4);
+\draw[arr] (q3) -- (q4);
+\node (q5) [nodestyle, below=of q4, label=left:\textbf{F}] {
+$b \leftarrow g + f$ \\
+$g \leftarrow m + n$
+};
+\draw[arr] (q4) -- (q5);
+\draw[arr] (q4) .. controls +(right:5cm) and +(right:5cm) .. (q1)
+    node foreach \p in {0, 0.25, ...,1} [sloped, above, pos=\p]{};
+
+\end{tikzpicture}
+\end{center}
+
+\vskip 0.2in
+
+\noindent For global name $f$:
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance = 9mm and 14mm,
+    nodestyle/.style = {draw,
+                        minimum width=8em,
+                        minimum height=2em,
+                        align=left,
+                        font=\ttfamily},
+    arr/.style       = {very thick,
+                        -latex}
+]
+\node (q0) [nodestyle, label=left:\textbf{A}] {
+$a \leftarrow \_a$ \\
+$b \leftarrow \_b $ \\
+$c \leftarrow a + b$ \\
+$b \leftarrow b * c$
+};
+\node (q1) [nodestyle, below=of q0, label=left:\textbf{B}]    {
+$g \leftarrow \phi(g, g)$ \\
+\textcolor{red}{$f \leftarrow \phi(f, f)$} \\
+$g \leftarrow b * c$ \\
+$f \leftarrow b$
+};
+\node (q2) [nodestyle,below=of q1, xshift=-6em, label=left:\textbf{C}] {
+$e \leftarrow a + f$ \\
+$g \leftarrow b * c$
+};
+\draw[arr] (q0) -- (q1);
+\draw[arr] (q1) -- (q2);
+\node (q3) [nodestyle,below=of q1, xshift=6em, label=left:\textbf{D}] {
+$e \leftarrow a + b$ \\
+};
+\draw[arr] (q1) -- (q3);
+\node (q4) [nodestyle,below=of q3, xshift=-6em, label=left:\textbf{E}] {
+$g \leftarrow \phi(g, g)$ \\
+$m \leftarrow b * c$ \\
+$g \leftarrow a$
+};
+\draw[arr] (q2) -- (q4);
+\draw[arr] (q3) -- (q4);
+\node (q5) [nodestyle, below=of q4, label=left:\textbf{F}] {
+$b \leftarrow g + f$ \\
+$g \leftarrow m + n$
+};
+\draw[arr] (q4) -- (q5);
+\draw[arr] (q4) .. controls +(right:5cm) and +(right:5cm) .. (q1)
+    node foreach \p in {0, 0.25, ...,1} [sloped, above, pos=\p]{};
+
+\end{tikzpicture}
+\end{center}
+
+\vskip 0.2in
+
+\noindent For global name $m$:
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance = 9mm and 14mm,
+    nodestyle/.style = {draw,
+                        minimum width=8em,
+                        minimum height=2em,
+                        align=left,
+                        font=\ttfamily},
+    arr/.style       = {very thick,
+                        -latex}
+]
+\node (q0) [nodestyle, label=left:\textbf{A}] {
+$a \leftarrow \_a$ \\
+$b \leftarrow \_b $ \\
+$c \leftarrow a + b$ \\
+$b \leftarrow b * c$
+};
+\node (q1) [nodestyle, below=of q0, label=left:\textbf{B}]    {
+$g \leftarrow \phi(g, g)$ \\
+$f \leftarrow \phi(f, f)$ \\
+\textcolor{red}{$m \leftarrow \phi(m, m)$} \\
+$g \leftarrow b * c$ \\
+$f \leftarrow b$
+};
+\node (q2) [nodestyle,below=of q1, xshift=-6em, label=left:\textbf{C}] {
+$e \leftarrow a + f$ \\
+$g \leftarrow b * c$
+};
+\draw[arr] (q0) -- (q1);
+\draw[arr] (q1) -- (q2);
+\node (q3) [nodestyle,below=of q1, xshift=6em, label=left:\textbf{D}] {
+$e \leftarrow a + b$ \\
+};
+\draw[arr] (q1) -- (q3);
+\node (q4) [nodestyle,below=of q3, xshift=-6em, label=left:\textbf{E}] {
+$g \leftarrow \phi(g, g)$ \\
+$m \leftarrow b * c$ \\
+$g \leftarrow a$
+};
+\draw[arr] (q2) -- (q4);
+\draw[arr] (q3) -- (q4);
+\node (q5) [nodestyle, below=of q4, label=left:\textbf{F}] {
+$b \leftarrow g + f$ \\
+$g \leftarrow m + n$
+};
+\draw[arr] (q4) -- (q5);
+\draw[arr] (q4) .. controls +(right:5cm) and +(right:5cm) .. (q1)
+    node foreach \p in {0, 0.25, ...,1} [sloped, above, pos=\p]{};
+
+\end{tikzpicture}
+\end{center}
+
+\vskip 0.2in
+
+\noindent For global name $n$:
+
+\vskip 0.1in
+
+\noindent Nothing is done here because $n$ does not have any defining blocks.
+
+\vskip 0.2in
+
+\noindent Final CFG:
+
+\vskip 0.1in
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance = 9mm and 14mm,
+    nodestyle/.style = {draw,
+                        minimum width=8em,
+                        minimum height=2em,
+                        align=left,
+                        font=\ttfamily},
+    arr/.style       = {very thick,
+                        -latex}
+]
+\node (q0) [nodestyle, label=left:\textbf{A}] {
+$a \leftarrow \_a$ \\
+$b \leftarrow \_b $ \\
+$c \leftarrow a + b$ \\
+$b \leftarrow b * c$
+};
+\node (q1) [nodestyle, below=of q0, label=left:\textbf{B}]    {
+$g \leftarrow \phi(g, g)$ \\
+$f \leftarrow \phi(f, f)$ \\
+$m \leftarrow \phi(m, m)$ \\
+$g \leftarrow b * c$ \\
+$f \leftarrow b$
+};
+\node (q2) [nodestyle,below=of q1, xshift=-6em, label=left:\textbf{C}] {
+$e \leftarrow a + f$ \\
+$g \leftarrow b * c$
+};
+\draw[arr] (q0) -- (q1);
+\draw[arr] (q1) -- (q2);
+\node (q3) [nodestyle,below=of q1, xshift=6em, label=left:\textbf{D}] {
+$e \leftarrow a + b$ \\
+};
+\draw[arr] (q1) -- (q3);
+\node (q4) [nodestyle,below=of q3, xshift=-6em, label=left:\textbf{E}] {
+$g \leftarrow \phi(g, g)$ \\
+$m \leftarrow b * c$ \\
+$g \leftarrow a$
+};
+\draw[arr] (q2) -- (q4);
+\draw[arr] (q3) -- (q4);
+\node (q5) [nodestyle, below=of q4, label=left:\textbf{F}] {
+$b \leftarrow g + f$ \\
+$g \leftarrow m + n$
+};
+\draw[arr] (q4) -- (q5);
+\draw[arr] (q4) .. controls +(right:5cm) and +(right:5cm) .. (q1)
+    node foreach \p in {0, 0.25, ...,1} [sloped, above, pos=\p]{};
+
+\end{tikzpicture}
+\end{center}
+
+\noindent Note: Although it looks like $e$ should contain a $\phi$-function at block E, $e$ is not a global variable
+as it is not utilized in any subsequent blocks. Therefore we do not need a $\phi$-function for $e$ at block $E$.
+
+\newpage
+
+\noindent \textbf{Solution 3):}
+
+\vskip 0.2in
+
+\noindent I start the process of renaming the $\phi$-function variables by building the dominance tree:
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance = 9mm and 14mm,
+    nodestyle/.style = {draw,
+                        minimum width=8em,
+                        minimum height=2em,
+                        align=left,
+                        font=\ttfamily},
+    arr/.style       = {very thick,
+                        -latex}
+]
+
+\node (q0) {A};
+\node (q1) [below=of q0] {B};
+\node (q2) [below=of q1, xshift=-6em] {C};
+\node (q3) [below=of q1, xshift=-0em] {D};
+\node (q4) [below=of q1, xshift=6em] {E};
+\node (q5) [below=of q4] {F};
+
+\draw[arr] (q0) -- (q1);
+\draw[arr] (q1) -- (q2);
+\draw[arr] (q1) -- (q3);
+\draw[arr] (q1) -- (q4);
+\draw[arr] (q4) -- (q5);
+
+\end{tikzpicture}
+\end{center}
+
+\vskip 0.2in
+
+\noindent To rename the variables, I follow the order of a preorder traversal of the dominance tree:
+
+\vskip 0.1in
+
+\noindent Pre(DomTree) = $\{A, B, C, D, E, F\}$
+
+\vskip 0.2in
+
+\noindent I will be using the following function definitions as provided by the lecture recording:
+
+\vskip 0.2in
+
+\noindent\textbf{\textit{StartRename():}}
+\begin{minted}
+[
+    bgcolor=gray!20,
+    baselinestretch=1.2,
+    frame=lines,
+    framesep=5mm,
+]{c}
+StartRename():
+    for each global name i
+        counter[i] <- 0
+        stack[i] <- emptyset
+    Rename(B_0)
+\end{minted}
+
+\vskip 0.2in
+
+\noindent\textbf{\textit{NewName(n):}}
+\begin{minted}
+[
+    bgcolor=gray!20,
+    baselinestretch=1.2,
+    frame=lines,
+    framesep=5mm,
+]{c}
+i <- counter[n]
+push n_i onto stack[n]
+counter[n]++
+return n_i
+\end{minted}
+
+\vskip 0.2in
+
+\noindent\textbf{\textit{Rename(B):}}
+\begin{minted}
+[
+    bgcolor=gray!20,
+    baselinestretch=1.2,
+    frame=lines,
+    framesep=5mm,
+]{c}
+for each phi-function in B, x <- phi(...)
+    rename x as NewName(x)
+
+for each operation "x <- y op z" in B
+    rewrite y as top (stack[y])
+    rewrite z as top (stack[z])
+    rewrite x as NewName(x)
+
+for each successor of B in the CFG
+    rewrite appropriate phi parameters
+
+// pre-order traversal on dom tree
+for each successor S of B in the dom tree
+    Rename(S)
+
+// back to previous scope
+for each operation "x <- y op z" in B
+    pop(stack[x])
+
+\end{minted}
+
+\noindent I use the above algorithm and show, for each iteration of the preorder traversal, the transformation at each block:
+
+\vskip 0.1in
+
+\noindent For A:
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance = 9mm and 14mm,
+    nodestyle/.style = {draw,
+                        minimum width=8em,
+                        minimum height=2em,
+                        align=left,
+                        font=\ttfamily},
+    arr/.style       = {very thick,
+                        -latex}
+]
+\node (q0) [nodestyle, color=red, label=left:\textbf{A}] {
+$a_0 \leftarrow \_a$ \\
+$b_0 \leftarrow \_b $ \\
+$c_0 \leftarrow a_0 + b_0$ \\
+$b_1 \leftarrow b_0 * c_0$
+};
+\node (q1) [nodestyle, below=of q0, label=left:\textbf{B}]    {
+$g \leftarrow \phi(g, g)$ \\
+$f \leftarrow \phi(f, f)$ \\
+$m \leftarrow \phi(m, m)$ \\
+$g \leftarrow b * c$ \\
+$f \leftarrow b$
+};
+\node (q2) [nodestyle,below=of q1, xshift=-6em, label=left:\textbf{C}] {
+$e \leftarrow a + f$ \\
+$g \leftarrow b * c$
+};
+\draw[arr] (q0) -- (q1);
+\draw[arr] (q1) -- (q2);
+\node (q3) [nodestyle,below=of q1, xshift=6em, label=left:\textbf{D}] {
+$e \leftarrow a + b$ \\
+};
+\draw[arr] (q1) -- (q3);
+\node (q4) [nodestyle,below=of q3, xshift=-6em, label=left:\textbf{E}] {
+$g \leftarrow \phi(g, g)$ \\
+$m \leftarrow b * c$ \\
+$g \leftarrow a$
+};
+\draw[arr] (q2) -- (q4);
+\draw[arr] (q3) -- (q4);
+\node (q5) [nodestyle, below=of q4, label=left:\textbf{F}] {
+$b \leftarrow g + f$ \\
+$g \leftarrow m + n$
+};
+\draw[arr] (q4) -- (q5);
+\draw[arr] (q4) .. controls +(right:5cm) and +(right:5cm) .. (q1)
+    node foreach \p in {0, 0.25, ...,1} [sloped, above, pos=\p]{};
+
+\end{tikzpicture}
+\end{center}
+
+\noindent Since block A is the first block, I renamed each variable to its 0th version. Since no variables
+are defined that are used in the parameters for any $\phi$-functions in B, I do not have to rewrite those parameters
+in B appropriately.
+
+\vskip 0.1in
+
+\noindent
+\begin{tabularx}{1.0\textwidth}{
+    |X|X|X|X|X|X|X|X|X|
+}
+\hline
+\textbf{name} & a & b & c & f & g & e & m & n \\
+\hline
+\textbf{stack} & $\{a_0\}$ & $\{b_0, b_1\}$ & $\{c_0\}$ & $\emptyset$ & $\emptyset$ & $\emptyset$ & $\emptyset$ & $\emptyset$ \\
+\hline
+\textbf{count} & 1 & 2 & 1 & 0 & 0 & 0 & 0 & 0 \\
+\hline
+\end{tabularx}
+
+\vskip 0.2in
+
+\noindent For B:
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance = 9mm and 14mm,
+    nodestyle/.style = {draw,
+                        minimum width=8em,
+                        minimum height=2em,
+                        align=left,
+                        font=\ttfamily},
+    arr/.style       = {very thick,
+                        -latex}
+]
+\node (q0) [nodestyle, color=blue, label=left:\textbf{A}] {
+$a_0 \leftarrow \_a$ \\
+$b_0 \leftarrow \_b $ \\
+$c_0 \leftarrow a_0 + b_0$ \\
+$b_1 \leftarrow b_0 * c_0$
+};
+\node (q1) [nodestyle, color=red, below=of q0, label=left:\textbf{B}]    {
+$g_0 \leftarrow \phi(g, g)$ \\
+$f_0 \leftarrow \phi(f, f)$ \\
+$m_0 \leftarrow \phi(m, m)$ \\
+$g_1 \leftarrow b_1 * c_0$ \\
+$f_1 \leftarrow b_1$
+};
+\node (q2) [nodestyle,below=of q1, xshift=-6em, label=left:\textbf{C}] {
+$e \leftarrow a + f$ \\
+$g \leftarrow b * c$
+};
+\draw[arr] (q0) -- (q1);
+\draw[arr] (q1) -- (q2);
+\node (q3) [nodestyle,below=of q1, xshift=6em, label=left:\textbf{D}] {
+$e \leftarrow a + b$ \\
+};
+\draw[arr] (q1) -- (q3);
+\node (q4) [nodestyle,below=of q3, xshift=-6em, label=left:\textbf{E}] {
+$g \leftarrow \phi(g, g)$ \\
+$m \leftarrow b * c$ \\
+$g \leftarrow a$
+};
+\draw[arr] (q2) -- (q4);
+\draw[arr] (q3) -- (q4);
+\node (q5) [nodestyle, below=of q4, label=left:\textbf{F}] {
+$b \leftarrow g + f$ \\
+$g \leftarrow m + n$
+};
+\draw[arr] (q4) -- (q5);
+\draw[arr] (q4) .. controls +(right:5cm) and +(right:5cm) .. (q1)
+    node foreach \p in {0, 0.25, ...,1} [sloped, above, pos=\p]{};
+
+\node (qx1) [align=left, color=red, fill=white, right=of q1] {
+counter[g++] = 0 \\
+counter[f++] = 0 \\
+counter[m++] = 0 \\
+top of stack[b] = $b_1$ \\
+top of stack[c] = $c_0$ \\
+counter[g++] = 1 \\
+counter[f++] = 1
+};
+
+\end{tikzpicture}
+\end{center}
+
+\vskip 0.1in
+
+\noindent
+\begin{tabularx}{1.0\textwidth}{
+    |X|X|X|X|X|X|X|X|X|
+}
+\hline
+\textbf{name} & a & b & c & f & g & e & m & n \\
+\hline
+\textbf{stack} & $\{a_0\}$ & $\{b_0, b_1\}$ & $\{c_0\}$ & $\{f_0, f_1\}$ & $\{g_0, g_1\}$ & $\emptyset$ & $\{m_0\}$ & $\emptyset$ \\
+\hline
+\textbf{count} & 1 & 2 & 1 & 2 & 2 & 0 & 1 & 0 \\
+\hline
+\end{tabularx}
+
+\vskip 0.2in
+
+\noindent For C:
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance = 9mm and 14mm,
+    nodestyle/.style = {draw,
+                        minimum width=8em,
+                        minimum height=2em,
+                        align=left,
+                        font=\ttfamily},
+    arr/.style       = {very thick,
+                        -latex}
+]
+\node (q0) [nodestyle, color=blue, label=left:\textbf{A}] {
+$a_0 \leftarrow \_a$ \\
+$b_0 \leftarrow \_b $ \\
+$c_0 \leftarrow a_0 + b_0$ \\
+$b_1 \leftarrow b_0 * c_0$
+};
+\node (q1) [nodestyle, color=blue, below=of q0, label=left:\textbf{B}]    {
+$g_0 \leftarrow \phi(g, g)$ \\
+$f_0 \leftarrow \phi(f, f)$ \\
+$m_0 \leftarrow \phi(m, m)$ \\
+$g_1 \leftarrow b_1 * c_0$ \\
+$f_1 \leftarrow b_1$
+};
+\node (q2) [nodestyle,below=of q1, color=red, xshift=-6em, label=left:\textbf{C}] {
+$e_0 \leftarrow a_0 + f_1$ \\
+$g_2 \leftarrow b_1 * c_0$
+};
+\draw[arr] (q0) -- (q1);
+\draw[arr] (q1) -- (q2);
+\node (q3) [nodestyle,below=of q1, xshift=6em, label=left:\textbf{D}] {
+$e \leftarrow a + b$ \\
+};
+\draw[arr] (q1) -- (q3);
+\node (q4) [nodestyle,below=of q3, xshift=-6em, label=left:\textbf{E}] {
+\textcolor{red}{$g \leftarrow \phi(g_2, g)$} \\
+$m \leftarrow b * c$ \\
+$g \leftarrow a$
+};
+\draw[arr] (q2) -- (q4);
+\draw[arr] (q3) -- (q4);
+\node (q5) [nodestyle, below=of q4, label=left:\textbf{F}] {
+$b \leftarrow g + f$ \\
+$g \leftarrow m + n$
+};
+\draw[arr] (q4) -- (q5);
+\draw[arr] (q4) .. controls +(right:5cm) and +(right:5cm) .. (q1)
+    node foreach \p in {0, 0.25, ...,1} [sloped, above, pos=\p]{};
+
+\node (qx1) [align=left, color=red, fill=white, left=of q3, xshift=-11em] {
+top of stack[a] = $a_0$ \\
+top of stack[f] = $f_1$ \\
+counter[e++] = 0 \\
+top of stack[b] = $b_1$ \\
+top of stack[c] = $c_0$
+};
+
+\end{tikzpicture}
+\end{center}
+
+\vskip 0.1in
+
+\noindent
+\begin{tabularx}{1.0\textwidth}{
+    |X|X|X|X|X|X|X|X|X|
+}
+\hline
+\textbf{name} & a & b & c & f & g & e & m & n \\
+\hline
+\textbf{stack} & $\{a_0\}$ & $\{b_0, b_1\}$ & $\{c_0\}$ & $\{f_0, f_1\}$ & $\{g_0, g_1, g_2\}$ & $\{e_0\}$ & $\{m_0\}$ & $\emptyset$ \\
+\hline
+\textbf{count} & 1 & 2 & 1 & 2 & 3 & 1 & 1 & 0 \\
+\hline
+\end{tabularx}
+
+\vskip 0.2in
+
+\noindent Since on the dominance tree C is a leaf, we will need to pop all the $x$ in C in the form $x \leftarrow y \text{ op } z$:
+
+\noindent
+\begin{tabularx}{1.0\textwidth}{
+    |X|X|X|X|X|X|X|X|X|
+}
+\hline
+\textbf{name} & a & b & c & f & g & e & m & n \\
+\hline
+\textbf{stack} & $\{a_0\}$ & $\{b_0, b_1\}$ & $\{c_0\}$ & $\{f_0, f_1\}$ & $\{g_0, g_1\}$ & $\emptyset$ & $\{m_0\}$ & $\emptyset$ \\
+\hline
+\textbf{count} & 1 & 2 & 1 & 2 & 2 & 0 & 1 & 0 \\
+\hline
+\end{tabularx}
+
+
+\vskip 0.2in
+
+\noindent For D:
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance = 9mm and 14mm,
+    nodestyle/.style = {draw,
+                        minimum width=8em,
+                        minimum height=2em,
+                        align=left,
+                        font=\ttfamily},
+    arr/.style       = {very thick,
+                        -latex}
+]
+\node (q0) [nodestyle, color=blue, label=left:\textbf{A}] {
+$a_0 \leftarrow \_a$ \\
+$b_0 \leftarrow \_b $ \\
+$c_0 \leftarrow a_0 + b_0$ \\
+$b_1 \leftarrow b_0 * c_0$
+};
+\node (q1) [nodestyle, color=blue, below=of q0, label=left:\textbf{B}]    {
+$g_0 \leftarrow \phi(g, g)$ \\
+$f_0 \leftarrow \phi(f, f)$ \\
+$m_0 \leftarrow \phi(m, m)$ \\
+\textcolor{red}{$g_1 \leftarrow b_1 * c_0$} \\
+$f_1 \leftarrow b_1$
+};
+\node (q2) [nodestyle, color=blue, below=of q1, xshift=-6em, label=left:\textbf{C}] {
+$e_0 \leftarrow a_0 + f_1$ \\
+$g_2 \leftarrow b_1 * c_0$
+};
+\draw[arr] (q0) -- (q1);
+\draw[arr] (q1) -- (q2);
+\node (q3) [nodestyle, color=red, below=of q1, xshift=6em, label=left:\textbf{D}] {
+$e_0 \leftarrow a_0 + b_1$ \\
+};
+\draw[arr] (q1) -- (q3);
+\node (q4) [nodestyle,below=of q3, xshift=-6em, label=left:\textbf{E}] {
+\textcolor{red}{$g \leftarrow \phi(g_2, g_1)$} \\
+$m \leftarrow b * c$ \\
+$g \leftarrow a$
+};
+\draw[arr] (q2) -- (q4);
+\draw[arr] (q3) -- (q4);
+\node (q5) [nodestyle, below=of q4, label=left:\textbf{F}] {
+$b \leftarrow g + f$ \\
+$g \leftarrow m + n$
+};
+\draw[arr] (q4) -- (q5);
+\draw[arr] (q4) .. controls +(right:5cm) and +(right:5cm) .. (q1)
+    node foreach \p in {0, 0.25, ...,1} [sloped, above, pos=\p]{};
+
+\node (qx1) [align=left, color=red, fill=white, right=of q3] {
+top of stack[a] = $a_0$ \\
+top of stack[b] = $b_1$ \\
+counter[e++] = 1
+};
+
+\end{tikzpicture}
+\end{center}
+
+\vskip 0.1in
+
+\noindent
+\begin{tabularx}{1.0\textwidth}{
+    |X|X|X|X|X|X|X|X|X|
+}
+\hline
+\textbf{name} & a & b & c & f & g & e & m & n \\
+\hline
+\textbf{stack} & $\{a_0\}$ & $\{b_0, b_1\}$ & $\{c_0\}$ & $\{f_0, f_1\}$ & $\{g_0, g_1\}$ & $\{e_0\}$ & $\{m_0\}$ & $\emptyset$ \\
+\hline
+\textbf{count} & 1 & 2 & 1 & 2 & 2 & 1 & 1 & 0 \\
+\hline
+\end{tabularx}
+
+\vskip 0.2in
+
+\noindent Since on the dominance tree D is a leaf, we will need to pop all the $x$ in C in the form $x \leftarrow y \text{ op } z$:
+
+\noindent
+\begin{tabularx}{1.0\textwidth}{
+    |X|X|X|X|X|X|X|X|X|
+}
+\hline
+\textbf{name} & a & b & c & f & g & e & m & n \\
+\hline
+\textbf{stack} & $\{a_0\}$ & $\{b_0, b_1\}$ & $\{c_0\}$ & $\{f_0, f_1\}$ & $\{g_0, g_1\}$ & $\emptyset$ & $\{m_0\}$ & $\emptyset$ \\
+\hline
+\textbf{count} & 1 & 2 & 1 & 2 & 2 & 0 & 1 & 0 \\
+\hline
+\end{tabularx}
+
+\vskip 0.2in
+
+\noindent For E:
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance = 9mm and 14mm,
+    nodestyle/.style = {draw,
+                        minimum width=8em,
+                        minimum height=2em,
+                        align=left,
+                        font=\ttfamily},
+    arr/.style       = {very thick,
+                        -latex}
+]
+\node (q0) [nodestyle, color=blue, label=left:\textbf{A}] {
+$a_0 \leftarrow \_a$ \\
+$b_0 \leftarrow \_b $ \\
+$c_0 \leftarrow a_0 + b_0$ \\
+$b_1 \leftarrow b_0 * c_0$
+};
+\node (q1) [nodestyle, color=blue, below=of q0, label=left:\textbf{B}]    {
+\textcolor{red}{$g_0 \leftarrow \phi(g_3, g)$} \\
+\textcolor{red}{$f_0 \leftarrow \phi(f_1, f)$} \\
+\textcolor{red}{$m_0 \leftarrow \phi(m_1, m)$} \\
+$g_1 \leftarrow b_1 * c_0$ \\
+\textcolor{red}{$f_1 \leftarrow b_1$}
+};
+\node (q2) [nodestyle, color=blue, below=of q1, xshift=-6em, label=left:\textbf{C}] {
+$e_0 \leftarrow a_0 + f_1$ \\
+$g_2 \leftarrow b_1 * c_0$
+};
+\draw[arr] (q0) -- (q1);
+\draw[arr] (q1) -- (q2);
+\node (q3) [nodestyle, color=blue, below=of q1, xshift=6em, label=left:\textbf{D}] {
+$e_0 \leftarrow a_0 + b_1$ \\
+};
+\draw[arr] (q1) -- (q3);
+\node (q4) [nodestyle, color=red, below=of q3, xshift=-6em, label=left:\textbf{E}] {
+$g_2 \leftarrow \phi(g_2, g_1)$ \\
+$m_1 \leftarrow b_1 * c_0$ \\
+$g_3 \leftarrow a_0$
+};
+\draw[arr] (q2) -- (q4);
+\draw[arr] (q3) -- (q4);
+\node (q5) [nodestyle, below=of q4, label=left:\textbf{F}] {
+$b \leftarrow g + f$ \\
+$g \leftarrow m + n$
+};
+\draw[arr] (q4) -- (q5);
+\draw[arr] (q4) .. controls +(right:5cm) and +(right:5cm) .. (q1)
+    node foreach \p in {0, 0.25, ...,1} [sloped, above, pos=\p]{};
+
+\node (qx1) [align=left, color=red, fill=white, right=of q4] {
+counter[g++] = 2 \\
+top of stack[b] = $b_1$ \\
+top of stack[c] = $c_0$ \\
+counter[m++] = 1
+top of stack[a] = $a_0$ \\
+counter[g++] = 3
+};
+
+\end{tikzpicture}
+\end{center}
+
+\vskip 0.2in
+
+\noindent
+\begin{tabularx}{1.0\textwidth}{
+    |X|X|X|X|X|X|X|X|X|
+}
+\hline
+\textbf{name} & a & b & c & f & g & e & m & n \\
+\hline
+\textbf{stack} & $\{a_0\}$ & $\{b_0, b_1\}$ & $\{c_0\}$ & $\{f_0, f_1\}$ & $\{g_0 g_1 g_2 g_3\}$ & $\emptyset$ & $\{m_0, m_1\}$ & $\emptyset$ \\
+\hline
+\textbf{count} & 1 & 2 & 1 & 2 & 4 & 0 & 2 & 0 \\
+\hline
+\end{tabularx}
+
+\vskip 0.2in
+
+\noindent For F:
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance = 9mm and 14mm,
+    nodestyle/.style = {draw,
+                        minimum width=8em,
+                        minimum height=2em,
+                        align=left,
+                        font=\ttfamily},
+    arr/.style       = {very thick,
+                        -latex}
+]
+\node (q0) [nodestyle, color=blue, label=left:\textbf{A}] {
+$a_0 \leftarrow \_a$ \\
+$b_0 \leftarrow \_b $ \\
+$c_0 \leftarrow a_0 + b_0$ \\
+$b_1 \leftarrow b_0 * c_0$
+};
+\node (q1) [nodestyle, color=blue, below=of q0, label=left:\textbf{B}]    {
+$g_0 \leftarrow \phi(g_3, g)$ \\
+$f_0 \leftarrow \phi(f_1, f)$ \\
+$m_0 \leftarrow \phi(m_1, m)$ \\
+$g_1 \leftarrow b_1 * c_0$ \\
+$f_1 \leftarrow b_1$
+};
+\node (q2) [nodestyle, color=blue, below=of q1, xshift=-6em, label=left:\textbf{C}] {
+$e_0 \leftarrow a_0 + f_1$ \\
+$g_2 \leftarrow b_1 * c_0$
+};
+\draw[arr] (q0) -- (q1);
+\draw[arr] (q1) -- (q2);
+\node (q3) [nodestyle, color=blue, below=of q1, xshift=6em, label=left:\textbf{D}] {
+$e_0 \leftarrow a_0 + b_1$ \\
+};
+\draw[arr] (q1) -- (q3);
+\node (q4) [nodestyle, color=blue, below=of q3, xshift=-6em, label=left:\textbf{E}] {
+$g_2 \leftarrow \phi(g_2, g_1)$ \\
+$m_1 \leftarrow b_1 * c_0$ \\
+$g_3 \leftarrow a_0$
+};
+\draw[arr] (q2) -- (q4);
+\draw[arr] (q3) -- (q4);
+\node (q5) [nodestyle, color=red, below=of q4, label=left:\textbf{F}] {
+$b_2 \leftarrow g_3 + f_1$ \\
+$g_4 \leftarrow m_1 + n$
+};
+\draw[arr] (q4) -- (q5);
+\draw[arr] (q4) .. controls +(right:5cm) and +(right:5cm) .. (q1)
+    node foreach \p in {0, 0.25, ...,1} [sloped, above, pos=\p]{};
+
+\node (qx1) [align=left, color=red, fill=white, right=of q5] {
+top of stack(g) = $g_3$ \\
+top of stack(f) = $f_1$ \\
+counter[b++] = 2 \\
+top of stack(m) = $m_1$ \\
+top of stack(n) = $\emptyset$ \\
+counter[g++] = 4
+};
+
+\end{tikzpicture}
+\end{center}
+
+\vskip 0.2in
+
+\noindent
+\begin{tabularx}{1.0\textwidth}{
+    |X|X|X|X|X|X|X|X|X|
+}
+\hline
+\textbf{name} & a & b & c & f & g & e & m & n \\
+\hline
+\textbf{stack} & $\{a_0\}$ & $\{b_0, b_1, b_2\}$ & $\{c_0\}$ & $\{f_0, f_1\}$ & $\{g_0  ... g_4\}$ & $\emptyset$ & $\{m_0, m_1\}$ & $\emptyset$ \\
+\hline
+\textbf{count} & 1 & 3 & 1 & 2 & 5 & 0 & 2 & 0 \\
+\hline
+\end{tabularx}
+
+\vskip 0.3in
+
+\noindent The final CFG:
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance = 9mm and 14mm,
+    nodestyle/.style = {draw,
+                        minimum width=8em,
+                        minimum height=2em,
+                        align=left,
+                        font=\ttfamily},
+    arr/.style       = {very thick,
+                        -latex}
+]
+\node (q0) [nodestyle, label=left:\textbf{A}] {
+$a_0 \leftarrow \_a$ \\
+$b_0 \leftarrow \_b $ \\
+$c_0 \leftarrow a_0 + b_0$ \\
+$b_1 \leftarrow b_0 * c_0$
+};
+\node (q1) [nodestyle, below=of q0, label=left:\textbf{B}]    {
+$g_0 \leftarrow \phi(g_3, g)$ \\
+$f_0 \leftarrow \phi(f_1, f)$ \\
+$m_0 \leftarrow \phi(m_1, m)$ \\
+$g_1 \leftarrow b_1 * c_0$ \\
+$f_1 \leftarrow b_1$
+};
+\node (q2) [nodestyle, below=of q1, xshift=-6em, label=left:\textbf{C}] {
+$e_0 \leftarrow a_0 + f_1$ \\
+$g_2 \leftarrow b_1 * c_0$
+};
+\draw[arr] (q0) -- (q1);
+\draw[arr] (q1) -- (q2);
+\node (q3) [nodestyle, below=of q1, xshift=6em, label=left:\textbf{D}] {
+$e_0 \leftarrow a_0 + b_1$ \\
+};
+\draw[arr] (q1) -- (q3);
+\node (q4) [nodestyle, below=of q3, xshift=-6em, label=left:\textbf{E}] {
+$g_2 \leftarrow \phi(g_2, g_1)$ \\
+$m_1 \leftarrow b_1 * c_0$ \\
+$g_3 \leftarrow a_0$
+};
+\draw[arr] (q2) -- (q4);
+\draw[arr] (q3) -- (q4);
+\node (q5) [nodestyle, below=of q4, label=left:\textbf{F}] {
+$b_2 \leftarrow g_3 + f_1$ \\
+$g_4 \leftarrow m_1 + n$
+};
+\draw[arr] (q4) -- (q5);
+% \draw[arr] (q4) .. controls +(right:5cm) and +(right:5cm) .. (q1)
+%     node foreach \p in {0, 0.25, ...,1} [sloped, above, pos=\p]{};
+
+% \node (qx1) [align=left, color=red, fill=white, right=of q5] {
+% top of stack(g) = $g_3$ \\
+% top of stack(f) = $f_1$ \\
+% counter[b++] = 2 \\
+% top of stack(m) = $m_1$ \\
+% top of stack(n) = $\emptyset$ \\
+% counter[g++] = 4
+% };
+
+\end{tikzpicture}
+\end{center}

@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{blindtext}
+\usepackage[a4paper, total={7in, 9in}]{geometry}
+\usepackage{fancyhdr}
+\usepackage{minted}
+\usepackage[most]{tcolorbox}
+\usemintedstyle{lovelace}
+\usetikzlibrary{positioning,shapes.geometric}
+
+\definecolor{lightgray}{rgb}{0.74, 0.74, 0.74}
+
+\begin{document}
+
+\rhead{\thepage}
+\lhead{CS201 - Compiler Construction - Zhijia Zhao}
+
+\pagestyle{fancy}
+
+\cfoot{}
+
+% title
+\begin{center}
+
+\large{\textbf{Assignment 2}}
+
+\textbf{(Due: Jan 25 23:59)}
+
+Ivan Neto
+
+\end{center}
+
+\vskip 0.2in
+
+\input{problems/problem1}
+
+\input{solutions/solution1}
+
+\newpage
+
+\input{problems/problem2}
+
+\input{solutions/solution2}
+
+\end{document}

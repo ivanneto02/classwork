@@ -1,0 +1,37 @@
+
+\vskip 0.3in
+
+\noindent{\textbf{Solutions: }}
+
+\vskip 0.1in
+
+\noindent The preceding decision problem is undecidable.
+
+\vskip 0.1in
+
+% attempt 1, no good
+% \noindent Proving by construction, I construct a turing machine $L$ that can simulate $M$.
+% I will multiply all states by 2, each copy for a state being a counter for how many times we have been in that state.
+% If a state is reached in the execution of word $w$ by $M$, it is equivalent to reaching the "1" count for the state within $L$.
+% If we are at that "1" counter state within $L$ and $M$ reaches its same state on the next input, $L$ immediately accepts. Otherwise,
+% it places the state to the "1" counter state again.
+
+% attempt 2, maybe this idea works
+\noindent Assume this problem is decidable. Meaning, there is a turing machine $L$ that takes as input $<M, w>$ and:
+
+\begin{itemize}
+    \item[1.] L \textit{accepts} when M is ever in the same state twice in a row
+    \item[2.] L \textit{rejects} when M is never in the same state twice in a row
+\end{itemize}
+
+\noindent $L$ can easily be fitted to do item 1 above, by simply adding counter states in $L$ to simulate $M$ reaching the same state immediately after a state.
+
+\vskip 0.1in
+
+\noindent For item 2, consider $M$ being stuck on an infinite loop between different states, never having been in the same state twice in a row.
+The problem of deciding item 2 reduces to deciding $HALT_{TM}$. By Theorem 5.1, the halting problem is undecidable.
+
+\vskip 0.1in
+
+\noindent Deciding this decision problem implies deciding $HALT_{TM}$, which is a contradiction. By contradiction, I conclude that this
+decision problem is undecidable.

@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{n+nx}{t1}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nx}{cmp\PYGZus{}EQ}\PYG{+w}{ }\PYG{n+nx}{n}\PYG{o}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}
+\PYG{+w}{    }\PYG{n+nx}{t2}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nx}{cmp\PYGZus{}EQ}\PYG{+w}{ }\PYG{n+nx}{n}\PYG{o}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}
+\PYG{+w}{    }\PYG{n+nx}{cbr}\PYG{+w}{ }\PYG{n+nx}{t1}\PYG{o}{,}\PYG{+w}{ }\PYG{n+nx}{L2}\PYG{o}{,}\PYG{+w}{ }\PYG{n+nx}{L1}
+\PYG{n+nx}{L1}\PYG{o}{:}
+\PYG{+w}{    }\PYG{n+nx}{cbr}\PYG{+w}{ }\PYG{n+nx}{t2}\PYG{o}{,}\PYG{+w}{ }\PYG{n+nx}{L2}\PYG{o}{,}\PYG{+w}{ }\PYG{n+nx}{L3}
+\PYG{n+nx}{L2}\PYG{o}{:}
+\PYG{+w}{    }\PYG{n+nx}{ret}\PYG{+w}{ }\PYG{l+m+mi}{1}
+\PYG{n+nx}{L3}\PYG{o}{:}\PYG{+w}{ }\PYG{c+c1}{// if one of them is true we\PYGZsq{}ll be here}
+\PYG{+w}{    }\PYG{n+nx}{t3}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}
+\PYG{+w}{    }\PYG{n+nx}{t4}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{2}
+\PYG{n+nx}{L4}\PYG{o}{:}
+\PYG{+w}{    }\PYG{n+nx}{t3}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nx}{t3}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nx}{t4}
+\PYG{+w}{    }\PYG{n+nx}{t4}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nx}{t4}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{1}
+\PYG{+w}{    }\PYG{n+nx}{t5}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nx}{cmp\PYGZus{}LTE}\PYG{+w}{ }\PYG{n+nx}{t4}\PYG{o}{,}\PYG{+w}{ }\PYG{n+nx}{n}
+\PYG{+w}{    }\PYG{n+nx}{cbr}\PYG{+w}{ }\PYG{n+nx}{t5}\PYG{o}{,}\PYG{+w}{ }\PYG{n+nx}{L4}\PYG{o}{,}\PYG{+w}{ }\PYG{n+nx}{L5}
+\PYG{n+nx}{L5}\PYG{o}{:}
+\PYG{+w}{    }\PYG{n+nx}{ret}\PYG{+w}{ }\PYG{n+nx}{t2}
+\end{Verbatim}

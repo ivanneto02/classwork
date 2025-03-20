@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{StartRename}\PYG{p}{()}\PYG{o}{:}
+\PYG{+w}{    }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{each}\PYG{+w}{ }\PYG{n}{global}\PYG{+w}{ }\PYG{n}{name}\PYG{+w}{ }\PYG{n}{i}
+\PYG{+w}{        }\PYG{n}{counter}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{0}
+\PYG{+w}{        }\PYG{n}{stack}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{emptyset}
+\PYG{+w}{    }\PYG{n}{Rename}\PYG{p}{(}\PYG{n}{B\PYGZus{}0}\PYG{p}{)}
+\end{Verbatim}

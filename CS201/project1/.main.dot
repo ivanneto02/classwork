@@ -1,0 +1,19 @@
+digraph "CFG for 'main' function" {
+	label="CFG for 'main' function";
+
+	Node0x5558f9634e70 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{%0:\l  %1 = alloca i32, align 4\l  %2 = alloca i32, align 4\l  %3 = alloca i32, align 4\l  store i32 0, ptr %1, align 4\l  store i32 10, ptr %2, align 4\l  call void @test(i32 noundef 10, double noundef 1.010000e+01, i8 noundef\l... signext 97)\l  %4 = load i32, ptr %2, align 4\l  %5 = icmp eq i32 %4, 10\l  br i1 %5, label %6, label %9\l|{<s0>T|<s1>F}}"];
+	Node0x5558f9634e70:s0 -> Node0x5558f96384f0;
+	Node0x5558f9634e70:s1 -> Node0x5558f9638580;
+	Node0x5558f96384f0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#ef886b70",label="{%6:\l6:                                                \l  %7 = load i32, ptr %2, align 4\l  %8 = mul nsw i32 %7, 10\l  store i32 %8, ptr %3, align 4\l  br label %19\l}"];
+	Node0x5558f96384f0 -> Node0x5558f9634d80;
+	Node0x5558f9638580 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#ef886b70",label="{%9:\l9:                                                \l  %10 = load i32, ptr %2, align 4\l  %11 = icmp eq i32 %10, 20\l  br i1 %11, label %12, label %15\l|{<s0>T|<s1>F}}"];
+	Node0x5558f9638580:s0 -> Node0x5558f96388a0;
+	Node0x5558f9638580:s1 -> Node0x5558f96388f0;
+	Node0x5558f96388a0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f1ccb870",label="{%12:\l12:                                               \l  %13 = load i32, ptr %2, align 4\l  %14 = mul nsw i32 %13, 20\l  store i32 %14, ptr %3, align 4\l  br label %18\l}"];
+	Node0x5558f96388a0 -> Node0x5558f9638bc0;
+	Node0x5558f96388f0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f1ccb870",label="{%15:\l15:                                               \l  %16 = load i32, ptr %2, align 4\l  %17 = mul nsw i32 %16, 30\l  store i32 %17, ptr %3, align 4\l  br label %18\l}"];
+	Node0x5558f96388f0 -> Node0x5558f9638bc0;
+	Node0x5558f9638bc0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#ef886b70",label="{%18:\l18:                                               \l  br label %19\l}"];
+	Node0x5558f9638bc0 -> Node0x5558f9634d80;
+	Node0x5558f9634d80 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{%19:\l19:                                               \l  %20 = call i32 (ptr, ...) @printf(ptr noundef @.str)\l  ret i32 0\l}"];
+}

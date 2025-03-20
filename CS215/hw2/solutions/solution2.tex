@@ -1,0 +1,23 @@
+
+\vskip 0.3in
+
+\noindent{\textbf{Solutions: }}
+
+\vskip 0.3in
+
+\noindent Since $u \in \Sigma^*$, assume $u = \epsilon$. In this case, $L(G) = \{uv : v \in \Sigma^*\} = \{v : v \in \Sigma^*\}$.
+
+\vskip 0.1in
+
+\noindent I shall assume that there is a turing machine $F$ that decides the problem of
+whether $L(G) = \{v : v \in \Sigma^*\}$. Since $v$ is any word in $\Sigma^*$, $F$ rejects on
+an infinitely looping input, and rejects on a rejecting input. Similarly, it accepts in an accepting
+input. This is equal to $A_{TM}$, which in Theorem 4.11 we prove to be undecidable.
+
+\vskip 0.1in
+
+\noindent Assuming the decision problem to be decidable implies $A_{TM}$ is decidable, which it is not.
+
+\vskip 0.1in
+
+\noindent By contradiction, this decision problem is undecidable, due to being reducible to $A_{TM}$.

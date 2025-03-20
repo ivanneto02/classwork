@@ -1,0 +1,24 @@
+{
+  "name": "cs180-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/limesoda314/CS180-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/limesoda314/CS180-Project/issues"
+  },
+  "homepage": "https://github.com/limesoda314/CS180-Project#readme",
+  "dependencies": {
+    "react-canvas-draw": "^1.2.1"
+  }
+}

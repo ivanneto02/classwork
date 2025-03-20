@@ -1,0 +1,35 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Compiled}\PYG{+w}{ }\PYG{n}{from}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}add.java\PYGZdq{}}
+\PYG{n}{class}\PYG{+w}{ }\PYG{n}{Main}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{Main}\PYG{p}{();}
+\PYG{+w}{    }\PYG{n+nl}{Code}\PYG{p}{:}
+\PYG{+w}{       }\PYG{l+m+mi}{0}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{aload\PYGZus{}0}
+\PYG{+w}{       }\PYG{l+m+mi}{1}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{invokespecial}\PYG{+w}{ }\PYG{err}{\PYGZsh{}}\PYG{l+m+mi}{1}\PYG{+w}{                  }\PYG{c+c1}{// Method java/lang/Object.\PYGZdq{}\PYGZlt{}init\PYGZgt{}\PYGZdq{}:()V}
+\PYG{+w}{       }\PYG{l+m+mi}{4}\PYG{o}{:}\PYG{+w}{ }\PYG{k}{return}
+
+\PYG{+w}{  }\PYG{n}{public}\PYG{+w}{ }\PYG{k}{static}\PYG{+w}{ }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n}{main}\PYG{p}{(}\PYG{n}{java}\PYG{p}{.}\PYG{n}{lang}\PYG{p}{.}\PYG{n}{String}\PYG{p}{[]);}
+\PYG{+w}{    }\PYG{n+nl}{Code}\PYG{p}{:}
+\PYG{+w}{       }\PYG{l+m+mi}{0}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{bipush}\PYG{+w}{        }\PYG{l+m+mi}{10}
+\PYG{+w}{       }\PYG{l+m+mi}{2}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{istore\PYGZus{}1}
+\PYG{+w}{       }\PYG{l+m+mi}{3}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{bipush}\PYG{+w}{        }\PYG{l+m+mi}{20}
+\PYG{+w}{       }\PYG{l+m+mi}{5}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{istore\PYGZus{}2}
+\PYG{+w}{       }\PYG{l+m+mi}{6}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{bipush}\PYG{+w}{        }\PYG{l+m+mi}{30}
+\PYG{+w}{       }\PYG{l+m+mi}{8}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{istore\PYGZus{}3}
+\PYG{+w}{       }\PYG{l+m+mi}{9}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{iload\PYGZus{}1}
+\PYG{+w}{      }\PYG{l+m+mi}{10}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{iload\PYGZus{}2}
+\PYG{+w}{      }\PYG{l+m+mi}{11}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{iload\PYGZus{}3}
+\PYG{+w}{      }\PYG{l+m+mi}{12}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{invokestatic}\PYG{+w}{  }\PYG{err}{\PYGZsh{}}\PYG{l+m+mi}{7}\PYG{+w}{                  }\PYG{c+c1}{// Method add:(III)I}
+\PYG{+w}{      }\PYG{l+m+mi}{15}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{istore}\PYG{+w}{        }\PYG{l+m+mi}{4}
+\PYG{+w}{      }\PYG{l+m+mi}{17}\PYG{o}{:}\PYG{+w}{ }\PYG{k}{return}
+
+\PYG{+w}{  }\PYG{n}{public}\PYG{+w}{ }\PYG{k}{static}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{add}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n+nl}{Code}\PYG{p}{:}
+\PYG{+w}{       }\PYG{l+m+mi}{0}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{iload\PYGZus{}0}
+\PYG{+w}{       }\PYG{l+m+mi}{1}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{iload\PYGZus{}1}
+\PYG{+w}{       }\PYG{l+m+mi}{2}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{iadd}
+\PYG{+w}{       }\PYG{l+m+mi}{3}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{iload\PYGZus{}2}
+\PYG{+w}{       }\PYG{l+m+mi}{4}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{iadd}
+\PYG{+w}{       }\PYG{l+m+mi}{5}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{ireturn}
+\PYG{p}{\PYGZcb{}}
+
+\end{Verbatim}

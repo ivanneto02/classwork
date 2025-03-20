@@ -1,0 +1,9 @@
+digraph "Call graph: a.bc" {
+	label="Call graph: a.bc";
+
+	Node0x5581921d3bb0 [shape=record,label="{test}"];
+	Node0x5581921d3b00 [shape=record,label="{main}"];
+	Node0x5581921d3b00 -> Node0x5581921d3bb0;
+	Node0x5581921d3b00 -> Node0x5581921d3c60;
+	Node0x5581921d3c60 [shape=record,label="{printf}"];
+}

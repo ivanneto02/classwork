@@ -1,0 +1,114 @@
+
+\vskip 0.2in
+
+\noindent \textbf{Solution:}
+
+\vskip 0.1in
+
+\noindent \textbf{Solution 1.1)} Finding all the EBBs in the CFG
+
+\begin{enumerate}
+    \item[] $EBB_1 = \{A\}$
+    \item[] $EBB_2 = \{B, C, D, E\}$
+    \item[] $EBB_3 = \{F, G, H\}$
+\end{enumerate}
+
+\vskip 0.3in
+
+\noindent \textbf{Solution 1.2)} Check if block sets form a region
+
+\begin{itemize}
+    \item[a)] $\{B, C, D\}$ - Yes
+    \item[b)] $\{B, C, D, E\}$ - Yes
+    \item[c)] $\{C, D, E, F\}$ - No, because $C$ does not dominate $F$. $F$ also cannot reach any nodes $C, D, E$ without going through $C$.
+    \item[d)] $\{B, C, D, E, F, G\}$ - Yes
+\end{itemize}
+
+\vskip 0.3in
+
+\noindent \textbf{Solution 1.3)} Find the dominator set for each basic block
+
+\vskip 0.2in
+
+\noindent \begin{tabular}{ |c|c|c| }
+    \hline
+    Block & Dominator Set & Immediate Dominator \\ 
+    \hline
+    $A$ & $\{A\}$ & $-$ \\ 
+    \hline
+    $B$ & $\{A, B\}$ & $A$ \\ 
+    \hline
+    $C$ & $\{A, B, C\}$ & $B$ \\
+    \hline
+    $D$ & $\{A, B, C, D\}$ & $C$ \\
+    \hline
+    $E$ & $\{A, B, C, E\}$ & $C$ \\
+    \hline
+    $F$ & $\{A, B, F\}$ & $B$ \\
+    \hline
+    $G$ & $\{A, B, F, G\}$ & $F$ \\
+    \hline
+    $H$ & $\{A, B, F, G, H\}$ & $G$ \\
+    \hline
+   \end{tabular}
+
+\vskip 0.3in
+
+\noindent \textbf{Solution 1.4)} Build the dominance tree for the CFG
+
+\vskip 0.2in
+
+\begin{center}
+\begin{tikzpicture}
+[
+    node distance = 9mm and 14mm,
+    nodestyle/.style = {circle,
+                        minimum width=4em,
+                        draw,
+                        font=\ttfamily},
+    arr/.style       = {very thick,
+                        -latex}
+]
+
+\node (q0) [nodestyle] {
+\textbf{A}
+};
+
+\node (q1) [nodestyle, below=of q0] {
+\textbf{B}
+};
+
+\node (q2) [nodestyle, below=of q1, xshift=-8em] {
+\textbf{C}
+};
+
+\node (q3) [nodestyle, below=of q1, xshift=8em] {
+\textbf{F}
+};
+
+\node (q4) [nodestyle, below=of q3] {
+\textbf{G}
+};
+
+\node (q5) [nodestyle, below=of q4] {
+\textbf{H}
+};
+
+\node (q6) [nodestyle, below=of q2, xshift=-4em] {
+\textbf{D}
+};
+
+\node (q7) [nodestyle, below=of q2, xshift=4em] {
+\textbf{E}
+};
+
+\draw[arr] (q0) -- (q1);
+\draw[arr] (q1) -- (q2);
+\draw[arr] (q1) -- (q3);
+\draw[arr] (q2) -- (q6);
+\draw[arr] (q2) -- (q7);
+\draw[arr] (q3) -- (q4);
+\draw[arr] (q4) -- (q5);
+
+\end{tikzpicture}
+\end{center}

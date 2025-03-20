@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{blindtext}
+\usepackage[a4paper, bottom=1in, top=1in, right=0.75in, left=0.75in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{minted}
+\usepackage[most]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{array}
+% \setlength{\extrarowheight}{15pt}
+\definecolor{mygray}{rgb}{0.8,0.8,0.8}
+\lstset{%
+basicstyle=\ttfamily,
+breaklines = true,
+backgroundcolor=\color{mygray},
+}
+\usepackage{realboxes}
+\usetikzlibrary{chains,shadows.blur}
+\usemintedstyle{lovelace}
+
+\definecolor{lightgray}{rgb}{0.74, 0.74, 0.74}
+
+\DeclareDocumentCommand{\clist}{v}{%
+    \Colorbox{mygray}{\csname lstinline\endcsname!#1!}%
+}
+
+\begin{document}
+
+\rhead{\thepage}
+\lhead{CS201 - Compiler Construction - Zhijia Zhao}
+
+\pagestyle{fancy}
+
+\cfoot{}
+
+% title
+\begin{center}
+
+\large{\textbf{Assignment 6}}
+
+\textbf{(Due: Feb 22 23:59)}
+
+Ivan Neto
+
+\end{center}
+
+\vskip 0.2in
+
+\input{problems/problem1}
+
+\input{solutions/solution1}
+
+\end{document}

@@ -1,0 +1,18 @@
+\frametitle{Background}
+
+What is a word vector?
+
+\begin{minted}{cpp}
+vectorize("hello") -> [0, 0.23, 0, .10, 0.5, 0.75, ...]
+\end{minted}
+
+
+\vskip 0.2in
+
+Problem(s):
+\begin{itemize}
+    \item Current methods \textbf{do not truly capture similarity} between words.
+    \item Computational capabilities only allow for \textbf{limited size} of data.
+    \item In-domain data is limited.
+\end{itemize}
+

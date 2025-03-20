@@ -1,0 +1,14 @@
+digraph "CFG for 'main' function" {
+	label="CFG for 'main' function";
+
+	Node0x560f84b62850 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %retval = alloca i32, align 4\l  %x = alloca i32, align 4\l  %y = alloca i32, align 4\l  %z = alloca i32, align 4\l  store i32 0, ptr %retval, align 4\l  store i32 10, ptr %x, align 4\l  store i32 20, ptr %y, align 4\l  %0 = load i32, ptr %x, align 4\l  %1 = load i32, ptr %y, align 4\l  %cmp = icmp eq i32 %0, %1\l  br i1 %cmp, label %if.then, label %if.else\l|{<s0>T|<s1>F}}"];
+	Node0x560f84b62850:s0 -> Node0x560f84b628a0;
+	Node0x560f84b62850:s1 -> Node0x560f84b62800;
+	Node0x560f84b628a0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f59c7d70",label="{if.then:                                          \l  store i32 1, ptr %retval, align 4\l  br label %return\l}"];
+	Node0x560f84b628a0 -> Node0x560f84b62760;
+	Node0x560f84b62800 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f59c7d70",label="{if.else:                                          \l  store i32 17, ptr %z, align 4\l  br label %if.end\l}"];
+	Node0x560f84b62800 -> Node0x560f84b64fe0;
+	Node0x560f84b64fe0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f59c7d70",label="{if.end:                                           \l  store i32 0, ptr %retval, align 4\l  br label %return\l}"];
+	Node0x560f84b64fe0 -> Node0x560f84b62760;
+	Node0x560f84b62760 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  %2 = load i32, ptr %retval, align 4\l  ret i32 %2\l}"];
+}

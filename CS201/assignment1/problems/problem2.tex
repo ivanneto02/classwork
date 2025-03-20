@@ -1,0 +1,80 @@
+
+\noindent \textbf{Problem 2:} Consider the following control flow graph (CFG) and answer the following questions.
+
+
+\begin{itemize}
+    \item[1.] Find all the EBBs in the CFG;
+    \item[2.] Check if any of the following block sets (and their associated edges) may form a region:
+    \begin{itemize}
+        \item[a)] $\{B, C, D\}$
+        \item[b)] $\{B, C, D, E\}$ 
+        \item[c)] $\{C, D, E, F\}$
+        \item[d)] $\{B, C, D, E, F, G\}$ 
+    \end{itemize} 
+    \item[3.] Find the dominator set for each basic block;
+    \item[4.] Build the dominance tree for the CFG;   
+\end{itemize}
+
+\vskip 0.3in
+
+\begin{center}
+\begin{tikzpicture}
+[
+    node distance = 9mm and 14mm,
+    nodestyle/.style = {draw,
+                        minimum width=5em,
+                        minimum height=2em,
+                        font=\ttfamily},
+    arr/.style       = {very thick,
+                       -latex}
+]
+
+\node (q0) [nodestyle] {
+\textbf{A}
+};
+\node (q1) [nodestyle, below=of q0] {
+\textbf{B}
+};
+
+\draw[arr] (q0) -- (q1);
+
+\node (q2) [nodestyle, below=of q1] {
+\textbf{C}
+};
+
+\draw[arr] (q1) -- (q2);
+
+\node (q3) [nodestyle, below=of q2, xshift=-3em] {
+\textbf{D}
+};
+
+\node (q4) [nodestyle, below=of q2, xshift=3em] {
+\textbf{E}
+};
+
+\draw[arr] (q2) -- (q3);
+\draw[arr] (q2) -- (q4);
+
+\node (q5) [nodestyle, below=of q3, xshift=3em] {
+\textbf{F}
+};
+
+\draw[arr] (q1) to [out=180, in=180] (q5);
+\draw[arr] (q3) -- (q5);
+\draw[arr] (q4) -- (q5);
+
+\node (q6) [nodestyle, below=of q5] {
+\textbf{G}
+};
+
+\draw[arr] (q6) to [out=0, in=0] (q1);
+\draw[arr] (q5) -- (q6);
+
+\node (q7) [nodestyle, below=of q6] {
+\textbf{H}
+};
+
+\draw[arr] (q6) -- (q7);
+
+\end{tikzpicture}
+\end{center}

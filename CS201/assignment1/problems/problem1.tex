@@ -1,0 +1,50 @@
+
+\noindent \textbf{Problem 1:} Apply super-local value numbering (SVN) to the following EBB:
+
+\vskip 0.2in
+
+\begin{tikzpicture}[
+    node distance = 9mm and 14mm,
+    nodestyle/.style = {draw,
+                        minimum width=8em,
+                        minimum height=2em,
+                        align=left,
+                        font=\ttfamily},
+    arr/.style       = {very thick,
+                       -latex}
+]
+\node (q0) [nodestyle, label=left:\textbf{A}] {
+$m \leftarrow a + b$ \\
+$p \leftarrow a + b$
+};
+\node (q1) [nodestyle, below=of q0, xshift=-6em, label=left:\textbf{B}]    {
+$p \leftarrow c + d$ \\
+$r \leftarrow c + d$
+};
+\node (q2) [nodestyle,below=of q0, xshift=6em, label=left:\textbf{C}] {
+$q \leftarrow a + b$ \\
+$r \leftarrow c + d$
+};
+\draw[arr] (q0) -- (q1);
+\draw[arr] (q0) -- (q2);
+\node (q3) [nodestyle,below=of q1, xshift=-6em, label=left:\textbf{D}] {
+$e \leftarrow b + 8$ \\
+$a \leftarrow a + b$
+};
+\node (q4) [nodestyle,below=of q1, xshift=6em, label=left:\textbf{E}] {
+$c \leftarrow a + 7$ \\
+$t \leftarrow c + d$
+};
+\draw[arr] (q1) -- (q3);
+\draw[arr] (q1) -- (q4);
+\end{tikzpicture}
+
+\vskip 0.3in
+
+\noindent Requirements:
+
+\begin{itemize}
+    \item[1)] Before applying SVN, first rename all variables with version numbers (subscripts starting from 0). This will address the overwritten issues that may occur during the later transformation;
+    \item[2)] Write down hash table status next to each basic block (assume a scoped hash table is used);
+    \item[3)] Write down the transformed EBB after removing the redundancies. 
+\end{itemize}

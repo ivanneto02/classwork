@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{blindtext}
+\usepackage[a4paper, bottom=1in, top=1in, right=0.75in, left=0.75in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{minted}
+\usepackage[most]{tcolorbox}
+\usepackage{graphicx}
+\definecolor{mygray}{rgb}{0.8,0.8,0.8}
+
+\lstset{%
+    basicstyle=\ttfamily,
+    breaklines = true,
+    backgroundcolor=\color{mygray},
+}
+
+\usepackage{realboxes}
+\usetikzlibrary{chains,shadows.blur}
+\usemintedstyle{lovelace} 
+
+\definecolor{lightgray}{rgb}{0.74, 0.74, 0.74}
+
+\DeclareDocumentCommand{\clist}{v}{%
+    \Colorbox{mygray}{\csname lstinline\endcsname!#1!}%
+}
+
+\begin{document}
+
+\rhead{\thepage}
+
+% \rfoot{\thepage}
+
+\lhead{CS215 - Theory of Computation - Marek Chrobak}
+
+\pagestyle{fancy}
+
+\cfoot{}
+
+% title
+\begin{center}
+
+\large{\textbf{CS215 ASSIGNMENT 1}}
+
+Due Wednesday, January 24, 11:59PM
+
+Ivan Neto
+
+\end{center}
+
+\noindent \textit{Note that students are NOT allowed to copy sentences without showing their references.}
+
+\vskip 0.2in
+
+\input{problems/problem1}
+
+\input{solutions/solution1}
+
+\newpage
+
+\input{problems/problem2}
+
+\input{solutions/solution2}
+
+\newpage
+
+\input{problems/problem3}
+
+\input{solutions/solution3}
+
+\newpage
+
+\input{integrity}
+
+\end{document}
