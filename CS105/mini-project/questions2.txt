@@ -1,0 +1,4 @@
+1. How many lectures did you attend for this course?
+2. How many times did you attend the course online?
+3. How much do you enjoy this course? (0-5 scale)
+4. How confident do you feel in this course? (0-5 scale)

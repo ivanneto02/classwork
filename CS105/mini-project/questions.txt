@@ -1,0 +1,9 @@
+- What class are you taking for this survey?
+
+- How many times have you missed lecture (neither online nor in-person)?
+
+- How many times have you chosen the online option for this class?
+
+- On a scale of 0-5, how much do you enjoy this class?
+
+- On a scale of 0-5, how knowledgeable do you feel in this class?

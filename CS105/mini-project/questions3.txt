@@ -1,0 +1,9 @@
+1. Do you like in-person class more or online class more?(in-person, online, doesn't matter)
+2. Can you concentrate more in an online class or in-person class? (in-person, online, the same) 
+5. Do you think you can get a better grade for registering in an online class instead of in-person class? (Yes, no)
+6. Did you get a better grade for registering in an online class?(yes, no)
+
+Deleted:
+
+"How often do you watch the recording of an online class? (most of the time, sometimes, rarely, never)"
+"Rate the importance of the recording of an online class (0-5 scale)"
