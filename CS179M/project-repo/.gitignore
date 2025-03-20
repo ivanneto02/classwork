@@ -1,0 +1,13 @@
+# Executables
+*.exe
+*.out
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+*.cmake
+
+# IDE
+*.autosave
+
+*.pro.user.*

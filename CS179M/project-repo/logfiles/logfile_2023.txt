@@ -1,0 +1,45 @@
+3-22-2023: 22:22  Uploaded Manifest ShipCase1.txt
+3-22-2023: 22:22  Finished a Cycle. Manifest ShipCase1OUTBOUND.txt was written to deskop, and a reminder to operator to send file was displayed.
+3-22-2023: 22:22  Test1
+3-22-2023: 22:22  Hello hello. Hello!!
+3-22-2023: 22:23  Uploaded Manifest ShipCase2.txt
+3-23-2023: 18:52  Balanced ship. Balance factor is now 0.990000
+3-23-2023: 18:52  Finished a Cycle. Manifest ShipCase1OUTBOUND.txt was written to deskop, and a reminder to operator to send file was displayed.
+3-23-2023: 18:55  Uploaded Manifest ShipCase1.txt
+3-23-2023: 18:55  Balanced ship. Balance factor is now 0.990000
+3-23-2023: 18:55  Finished a Cycle. Manifest ShipCase1OUTBOUND.txt was written to deskop, and a reminder to operator to send file was displayed.
+3-23-2023: 18:57  Uploaded Manifest ShipCase1.txt
+3-23-2023: 18:57  Balanced ship. Balance factor is now 0.990000
+3-23-2023: 18:57  Finished a Cycle. Manifest ShipCase1OUTBOUND.txt was written to deskop, and a reminder to operator to send file was displayed.
+3-23-2023: 19:16  Uploaded Manifest ShipCase1.txt
+3-23-2023: 19:16  Balanced ship. Balance factor is now 0.990000
+3-23-2023: 19:17  Uploaded Manifest ShipCase1.txt
+3-23-2023: 19:17  Balanced ship. Balance factor is now 0.990000
+3-23-2023: 20:25  Uploaded Manifest ShipCase1.txt
+3-23-2023: 20:26  Balanced ship. Balance factor is now 0.990000
+3-24-2023: 0:3  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:3  Balanced ship. Balance factor is now 0.000000
+3-24-2023: 0:4  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:4  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:7  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:7  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:8  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:10  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:11  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:13  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:13  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:14  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:14  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:28  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:29  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:29  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:29  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:30  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:30  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:33  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:35  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:37  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:38  Uploaded Manifest ShipCase1.txt
+3-24-2023: 0:38  Uploaded Manifest ShipCase1.txt
+3-25-2023: 7:4  Uploaded Manifest ShipCase1.txt
+3-25-2023: 7:5  Balanced ship. Balance factor is now 0.990000

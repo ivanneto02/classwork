@@ -1,0 +1,89 @@
+DROP TABLE IF EXISTS Professor;
+DROP TABLE IF EXISTS Dept;
+DROP TABLE IF EXISTS Project;
+DROP TABLE IF EXISTS Graduate;
+
+/* NOT SURE ABOUT THESE */
+
+DROP TABLE IF EXISTS WorksInDept;
+DROP TABLE IF EXISTS ProfWorksInProject;
+DROP TABLE IF EXISTS GradWorksInProject;
+
+/* AGGREGATION (EXTRA UNSURE) */
+
+DROP TABLE IF EXISTS ProjectSupervisor;
+
+/* AGGREGATION (EXTRA UNSURE) */
+
+/* NOT SURE ABOUT THESE */
+
+CREATE TABLE Professor (
+    ssn CHAR(9),
+    name CHAR(255),
+    age INTEGER,
+    rank INTEGER,
+    specialty CHAR(255),
+    PRIMARY KEY(ssn)
+);
+
+CREATE TABLE Dept (
+    dno CHAR(10), /* do not know how many chars */
+    runner_ssn CHAR(9),
+    dname CHAR(255),
+    office INTEGER,
+    PRIMARY KEY(dno),
+    FOREIGN KEY (runner_ssn) REFERENCES Professor(ssn),
+);
+
+CREATE TABLE Project (
+    pno CHAR(10), /* do not yet know how many chars */
+    sponsor CHAR(255),
+    start_date CHAR(10),
+    end_date CHAR(10),
+    budget CHAR(50),
+    manager_ssn CHAR(9),
+    PRIMARY KEY (pno)
+    FOREIGN KEY (manager_ssn) REFERENCES Professor(ssn),
+);
+
+CREATE TABLE Graduate (
+    ssn CHAR(9),
+    name CHAR(255),
+    age INTEGER,
+    deg_pg CHAR(255),
+    advisor_ssn CHAR(9),
+    majors_in_dept_dno CHAR(255),
+    PRIMARY KEY(ssn),
+    FOREIGN KEY (advisor_ssn) REFERENCES Graduate(ssn),
+    FOREIGN KEY (majors_in_dept_dno) REFERENCES Dept(dno),
+);
+
+/* MANY TO MANY */
+CREATE TABLE ProfWorksInProject (
+    ssn CHAR(9),
+    pno CHAR(10), /* not null */
+    PRIMARY KEY (ssn, pno),
+    FOREIGN KEY (pno) REFERENCES Project(pno),
+    FOREIGN KEY (ssn) REFERENCES Professor(ssn),
+);
+
+-- NOT FINISHED YET
+CREATE TABLE GradWorksInProject (
+    ssn CHAR(9),
+    pno CHAR(10),
+    since CHAR(10),
+    supervisor_ssn CHAR(9),
+    PRIMARY KEY (ssn, pno),
+    FOREIGN KEY (ssn) REFERENCES Graduate(ssn),
+    FOREIGN KEY (pno) REFERENCES Project(pno),
+    FOREIGN KEY (supervisor_ssn) REFERENCES Professor(ssn)
+);
+
+CREATE TABLE WorksInDept (
+    ssn CHAR(9),
+    dno CHAR(10),
+    time_pc INTEGER,
+    PRIMARY KEY (ssn, dno),
+    FOREIGN KEY (ssn) REFERENCES Professor(ssn),
+    FOREIGN KEY (dno) REFERNECES Dept(dno)
+);
