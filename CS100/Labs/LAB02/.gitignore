@@ -1,0 +1,6 @@
+*.exe
+*.cmake
+CMakeCache.txt
+CMakeFiles/
+Makefile
+c-echo-count

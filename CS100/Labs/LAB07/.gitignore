@@ -1,0 +1,17 @@
+# Executables
+*.out
+*.exe
+calculator
+
+# VSCode
+.vscode
+
+# Misc folders
+lib/
+bin/
+
+# CMake/Make
+CMakeCache.txt
+CMakeFiles/
+*.cmake
+Makefile

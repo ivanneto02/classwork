@@ -1,0 +1,13 @@
+# vscode
+*.vscode
+
+# executables
+*.out
+*.exe
+
+# CMake
+*.cmake
+CMakeCache.txt
+CMakeFiles/
+bin/
+lib/

@@ -1,0 +1,6 @@
+CMakeCache.txt
+Makefile
+*.cmake
+CMakeFiles/*
+lib/*
+test

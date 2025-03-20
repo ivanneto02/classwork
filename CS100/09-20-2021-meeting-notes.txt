@@ -1,0 +1,56 @@
+Design patterns as I understand them:
+
+Abstract Factory:
+	- From what I understand, it means having "families" of abstractions.
+	For example, the class "shape" defines the root class, while the class
+	"square" defines the child class, inheriting from shape. An abstract
+	factory is a design pattern that builds from this sort of inheritance
+	between different families.
+
+Adapter:
+	- A design pattern that allows two classes to work together that
+	otherwise couldn't have because of interfaces that are not compatible.
+	A wrapper.
+
+Bridge:
+	- 
+
+Builder:
+
+Chain of Responsibility:
+
+Command:
+
+Composite:
+
+Decorator:
+
+Facade:
+
+Factory Method:
+
+Flyweight:
+
+Interpreter:
+
+Iterator:
+
+Mediator:
+
+Memento:
+
+Observer:
+
+Prototype:
+
+Proxy:
+
+Singleton:
+
+State:
+
+Strategy:
+
+Template Method:
+
+Visitor:

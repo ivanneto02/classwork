@@ -1,0 +1,11 @@
+CMakeFiles/
+CMakeCache.txt
+Makefile
+*.cmake
+lib/
+test
+*.out
+testing.cpp
+*.swp
+main_out
+lab
